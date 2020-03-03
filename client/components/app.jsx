@@ -26,11 +26,11 @@ class App extends React.Component {
   }
 
   getAverageGrade() {
-    const average = 0;
+    let total = 0;
     this.state.grades.map(student => {
-
+      total += student.grade;
     });
-    return average;
+    return total / this.state.grades.length;
   }
 
   render() {
