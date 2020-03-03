@@ -1,17 +1,8 @@
-/* eslint-disable */
 import React, { Component } from 'react';
-import Grade from './grade'
 
 class GradeTable extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      grades: this.props.grades
-    }
-  }
-  render(){
-    const grades = this.state.grades ? this.state.grades : 'No Grades Recorded';
-    return(
+  render(props) {
+    return (
       <table className='table table-bordered table-striped table-hover'>
         <thead className='thead-dark'>
           <tr>
@@ -21,9 +12,11 @@ class GradeTable extends Component {
           </tr>
         </thead>
         <tbody>
-          {grades}
+          {props.grades}
         </tbody>
       </table>
-    )
+    );
   }
 }
+
+export default GradeTable;

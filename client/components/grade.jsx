@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 
 class Grade extends Component {
@@ -12,3 +11,5 @@ class Grade extends Component {
     );
   }
 }
+
+export default Grade;
