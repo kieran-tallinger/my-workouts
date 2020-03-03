@@ -9,6 +9,10 @@ class App extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.getGrades();
+  }
+
   render() {
     return (
       <Header />
