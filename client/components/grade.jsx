@@ -1,15 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Grade extends Component {
-  render(props) {
-    return (
-      <tr>
-        <td>{props.name}</td>
-        <td>{props.course}</td>
-        <td>{props.grade}</td>
-      </tr>
-    );
-  }
+function Grade(props) {
+  return (
+    <tr>
+      <td>{props.name}</td>
+      <td>{props.course}</td>
+      <td>{props.grade}</td>
+    </tr>
+  );
 }
 
 export default Grade;
