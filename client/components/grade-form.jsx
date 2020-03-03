@@ -9,6 +9,7 @@ class GradeForm extends Component {
       course: '',
       grade: ''
     };
+    this.handleNameChange = this.handleNameChange.bind(this)
   }
   handleNameChange(e){
     this.setState({
@@ -24,5 +25,23 @@ class GradeForm extends Component {
     this.setState({
       grade: e.target.value
     })
+  }
+  render(){
+    return(
+      <div>
+        <form>
+          <div>
+            <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
+            <input
+              required
+              autofocus
+              type='text'
+              placeholder='Name'
+              className='col'
+              onChange={this.handleNameChange}/>
+          </div>
+        </form>
+      </div>
+    )
   }
 }
