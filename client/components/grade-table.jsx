@@ -6,11 +6,11 @@ class GradeTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: null
+      grades: this.props.grades
     }
   }
   render(){
-    const grades = this.state.grades
+    const grades = this.state.grades ? this.state.grades : 'No Grades Recorded';
     return(
       <table className='table table-bordered table-striped table-hover'>
         <thead className='thead-dark'>
