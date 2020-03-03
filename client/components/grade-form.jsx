@@ -1,4 +1,3 @@
-/* eslint-disable */
 import React, { Component } from 'react';
 
 class GradeForm extends Component {
@@ -9,48 +8,63 @@ class GradeForm extends Component {
       course: '',
       grade: ''
     };
-    this.handleNameChange = this.handleNameChange.bind(this)
-    this.handleCourseChange =this.handleCourseChange.bind(this)
-    this.handleGradeChange = this.handleGradeChange.bind(this)
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleCourseChange = this.handleCourseChange.bind(this);
+    this.handleGradeChange = this.handleGradeChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
-  handleNameChange(e){
+
+  handleNameChange(e) {
     this.setState({
       name: e.target.value
-    })
+    });
   }
+
   handleCourseChange(e) {
     this.setState({
       course: e.target.value
-    })
+    });
   }
+
   handleGradeChange(e) {
     this.setState({
       grade: e.target.value
-    })
+    });
   }
-  handleSubmit(e){
+
+  handleSubmit(e) {
     e.preventDefault();
     const newGrade = {
       name: this.state.name,
       course: this.state.course,
       grade: this.state.grade
     };
-    this.props.onSubmit(newGrade)
+    this.props.onSubmit(newGrade);
     this.setState({
       name: '',
       course: '',
       grade: ''
     });
   }
-  render(){
-    return(
+
+  handleReset() {
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
+  }
+
+  render() {
+    return (
       <div>
         <form>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
             <input
               required
-              autofocus
+              autoFocus
               type='text'
               placeholder='Name'
               className='col'
@@ -80,10 +94,12 @@ class GradeForm extends Component {
           <div className='form-row my-3'>
             <div className="col-6"></div>
             <button type='submit' className='btn btn-success mx-1'>Add</button>
-            <button type='reset' className='btn btn-warning mx-1'>Cancel</button>
+            <button type='reset' className='btn btn-warning mx-1' onClick={this.handleReset}>Cancel</button>
           </div>
         </form>
       </div>
-    )
+    );
   }
 }
+
+export default GradeForm;
