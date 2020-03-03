@@ -9,4 +9,21 @@ class GradeTable extends Component {
       grades: null
     }
   }
+  render(){
+    const grades = this.state.grades
+    return(
+      <table className='table table-bordered table-striped table-hover'>
+        <thead className='thead-dark'>
+          <tr>
+            <th>Student Name</th>
+            <th>Course</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {grades}
+        </tbody>
+      </table>
+    )
+  }
 }
