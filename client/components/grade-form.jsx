@@ -58,7 +58,7 @@ class GradeForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className='col'>
         <form>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
