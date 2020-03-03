@@ -59,7 +59,7 @@ class GradeForm extends Component {
   render() {
     return (
       <div className='col'>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
             <input
@@ -94,7 +94,7 @@ class GradeForm extends Component {
           <div className='form-row my-3'>
             <div className="col-6"></div>
             <button type='submit' className='btn btn-success mx-1'>Add</button>
-            <button type='reset' className='btn btn-warning mx-1' onClick={this.handleReset}>Cancel</button>
+            <button type='reset' className='btn btn-warning mx-1'>Cancel</button>
           </div>
         </form>
       </div>
