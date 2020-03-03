@@ -28,6 +28,20 @@ class GradeForm extends Component {
       grade: e.target.value
     })
   }
+  handleSubmit(e){
+    e.preventDefault();
+    const newGrade = {
+      name: this.state.name,
+      course: this.state.course,
+      grade: this.state.grade
+    };
+    this.props.onSubmit(newGrade)
+    this.setState({
+      name: '',
+      course: '',
+      grade: ''
+    });
+  }
   render(){
     return(
       <div>
