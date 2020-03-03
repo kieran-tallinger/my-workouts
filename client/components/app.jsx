@@ -9,6 +9,7 @@ class App extends React.Component {
     this.state = {
       grades: []
     };
+    this.addGrade = this.addGrade.bind(this);
   }
 
   componentDidMount() {
@@ -38,10 +39,15 @@ class App extends React.Component {
     };
     fetch('/api/grades', fetchParams)
       .then(res => res.json())
-      .then(this.getGrades())
+      .then(data => {
+        this.setState({
+          grades: this.state.grades.concat(data)
+        });
+      })
       .catch(error => {
         console.error(error);
       });
+    this.getGrades();
   }
 
   getAverageGrade() {

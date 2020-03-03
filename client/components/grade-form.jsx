@@ -38,7 +38,7 @@ class GradeForm extends Component {
     const newGrade = {
       name: this.state.name,
       course: this.state.course,
-      grade: this.state.grade
+      grade: parseInt(this.state.grade)
     };
     this.props.onSubmit(newGrade);
     this.setState({
@@ -59,7 +59,7 @@ class GradeForm extends Component {
   render() {
     return (
       <div className='col'>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
             <input
