@@ -30,7 +30,7 @@ class App extends React.Component {
     this.state.grades.map(student => {
       total += student.grade;
     });
-    return total / this.state.grades.length;
+    return (total / this.state.grades.length).toFixed(1);
   }
 
   render() {

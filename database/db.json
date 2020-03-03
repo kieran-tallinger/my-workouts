@@ -10,13 +10,13 @@
       "id": 2,
       "name": "Brendan Eich",
       "course": "JavaScript",
-      "grade": 100
+      "grade": 45
     },
     {
       "id": 3,
       "name": "Douglas Crockford",
       "course": "JavaScript",
-      "grade": 100
+      "grade": 78
     }
   ]
 }
