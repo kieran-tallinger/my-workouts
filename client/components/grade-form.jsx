@@ -10,4 +10,19 @@ class GradeForm extends Component {
       grade: ''
     };
   }
+  handleNameChange(e){
+    this.setState({
+      name: e.target.value
+    })
+  }
+  handleCourseChange(e) {
+    this.setState({
+      course: e.target.value
+    })
+  }
+  handleGradeChange(e) {
+    this.setState({
+      grade: e.target.value
+    })
+  }
 }
