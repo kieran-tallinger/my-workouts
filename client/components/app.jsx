@@ -21,6 +21,9 @@ class App extends React.Component {
         this.setState({
           grades: data
         });
+      })
+      .catch(error => {
+        console.error(error);
       });
   }
 
@@ -32,7 +35,12 @@ class App extends React.Component {
       },
       body: JSON.stringify(newGrade)
     };
-    fetch('/api/grades', fetchParams);
+    fetch('/api/grades', fetchParams)
+      .then(res => res.json())
+      .then(this.getGrades())
+      .catch(error => {
+        console.error(error);
+      });
   }
 
   getAverageGrade() {
