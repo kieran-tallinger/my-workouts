@@ -3,7 +3,7 @@ import Grade from './grade';
 
 function GradeTable(props) {
   return (
-    <table className='table table-bordered table-striped table-hover'>
+    <table className='table table-bordered table-striped table-hover col'>
       <thead className='thead-dark'>
         <tr>
           <th>Student Name</th>

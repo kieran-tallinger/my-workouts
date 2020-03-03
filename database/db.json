@@ -17,6 +17,30 @@
       "name": "Douglas Crockford",
       "course": "JavaScript",
       "grade": 78
+    },
+    {
+      "name": "Van",
+      "course": "Stuff",
+      "grade": 75,
+      "id": 4
+    },
+    {
+      "name": "Mario",
+      "course": "Jumping",
+      "grade": 100,
+      "id": 5
+    },
+    {
+      "name": "Luigi",
+      "course": "Jumping",
+      "grade": 45,
+      "id": 6
+    },
+    {
+      "name": "Link",
+      "course": "Swordsmanship",
+      "grade": 100,
+      "id": 7
     }
   ]
 }
