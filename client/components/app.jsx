@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 import React from 'react';
 import Header from './header';
+import GradeTable from './grade-table';
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getGrades();
-    console.log(this.state.grades);
   }
 
   getGrades() {
@@ -27,7 +26,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <Header />
+      <div>
+        <Header />
+        <GradeTable grades={this.state.grades}></GradeTable>
+      </div>
     );
   }
 }
