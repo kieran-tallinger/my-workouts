@@ -15,6 +15,12 @@ class GradeForm extends Component {
     this.handleReset = this.handleReset.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentlyEditing !== prevProps.currentlyEditing) {
+      return null;
+    }
+  }
+
   handleNameChange(e) {
     this.setState({
       name: e.target.value
