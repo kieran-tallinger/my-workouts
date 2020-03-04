@@ -7,10 +7,12 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: []
+      grades: [],
+      currentlyEditing: null
     };
-    this.addGrade = this.addGrade.bind(this);
+    this.submitGrade = this.submitGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
+    this.switchFormMode = this.switchFormMode.bind(this);
   }
 
   componentDidMount() {
@@ -30,25 +32,55 @@ class App extends React.Component {
       });
   }
 
-  addGrade(newGrade) {
-    const fetchParams = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newGrade)
-    };
-    fetch('/api/grades', fetchParams)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          grades: this.state.grades.concat(data)
+  submitGrade(newGrade) {
+    if (this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newGrade)
+      };
+      fetch(`/api/grades/${this.state.currentlyEditing.id}`, fetchParams)
+        .then(res => res.json())
+        .then(data => { return data; })
+        .catch(error => {
+          console.error(error);
         });
-      })
-      .catch(error => {
-        console.error(error);
+      this.switchFormMode();
+      this.getGrades();
+    } else if (!this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newGrade)
+      };
+      fetch('/api/grades', fetchParams)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            grades: this.state.grades.concat(data)
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+
+  switchFormMode(id) {
+    if (!this.state.currentlyEditing) {
+      const gradeToUpdate = this.state.grades.filter(value => value.id === id);
+      this.setState({
+        currentlyEditing: gradeToUpdate[0]
       });
-    this.getGrades();
+    } else if (this.state.currentlyEditing) {
+      this.setState({
+        currentlyEditing: null
+      });
+    }
   }
 
   deleteGrade(id) {
@@ -82,8 +114,8 @@ class App extends React.Component {
       <div className ="container">
         <Header average={this.getAverageGrade()}/>
         <div className='row'>
-          <GradeTable grades={this.state.grades} delete={this.deleteGrade}/>
-          <GradeForm onSubmit={this.addGrade} />
+          <GradeTable grades={this.state.grades} delete={this.deleteGrade} update={this.switchFormMode}/>
+          <GradeForm onSubmit={this.submitGrade} currentlyEditing={this.state.currentlyEditing}/>
         </div>
       </div>
     );

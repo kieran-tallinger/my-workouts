@@ -1,12 +1,6 @@
 {
   "grades": [
     {
-      "name": "Kieran Tallinger",
-      "course": "Web Stuff",
-      "grade": 110,
-      "id": 1
-    },
-    {
       "name": "Mario",
       "course": "Jumping",
       "grade": 100,
@@ -14,9 +8,27 @@
     },
     {
       "name": "Luigi",
-      "course": "Jumping",
-      "grade": 34,
+      "course": "Falling",
+      "grade": 100,
       "id": 3
+    },
+    {
+      "name": "Samus",
+      "course": "Target Practice",
+      "grade": 99,
+      "id": 4
+    },
+    {
+      "name": "Link",
+      "course": "Courage",
+      "grade": 100,
+      "id": 5
+    },
+    {
+      "name": "Van",
+      "course": "Web Stuff",
+      "grade": 80,
+      "id": 6
     }
   ]
 }
