@@ -1,3 +1,22 @@
 {
-  "grades": []
+  "grades": [
+    {
+      "name": "Kieran Tallinger",
+      "course": "Web Stuff",
+      "grade": 110,
+      "id": 1
+    },
+    {
+      "name": "Mario",
+      "course": "Jumping",
+      "grade": 100,
+      "id": 2
+    },
+    {
+      "name": "Luigi",
+      "course": "Jumping",
+      "grade": 34,
+      "id": 3
+    }
+  ]
 }
