@@ -17,11 +17,19 @@ class GradeForm extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentlyEditing !== prevProps.currentlyEditing) {
-      this.setState({
-        name: this.props.currentlyEditing.name,
-        course: this.props.currentlyEditing.course,
-        grade: this.props.currentlyEditing.grade
-      });
+      if (this.props.currentlyEditing) {
+        this.setState({
+          name: this.props.currentlyEditing.name,
+          course: this.props.currentlyEditing.course,
+          grade: this.props.currentlyEditing.grade
+        });
+      } else if (!this.props.currentlyEditing) {
+        this.setState({
+          name: '',
+          course: '',
+          grade: ''
+        });
+      }
     }
   }
 
@@ -68,6 +76,7 @@ class GradeForm extends Component {
 
   render() {
     const header = this.props.currentlyEditing ? 'Update Grade' : 'Add a Grade';
+    const submitButton = this.props.currentlyEditing ? 'Update' : 'Add';
     return (
       <div className='col'>
         <div className='text-center pb-1'>
@@ -106,7 +115,7 @@ class GradeForm extends Component {
               onChange={this.handleGradeChange} />
           </div>
           <div className='form-row my-3 justify-content-end'>
-            <button type='submit' className='btn btn-success mx-1'>Add</button>
+            <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
             <button type='reset' className='btn btn-warning mx-1'>Cancel</button>
           </div>
         </form>
