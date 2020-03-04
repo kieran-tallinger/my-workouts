@@ -67,7 +67,7 @@ class GradeForm extends Component {
               autoFocus
               type='text'
               placeholder='Name'
-              className='col ml-2'
+              className='form-control col ml-2'
               value={this.state.name}
               onChange={this.handleNameChange}/>
           </div>
@@ -77,7 +77,7 @@ class GradeForm extends Component {
               required
               type='text'
               placeholder='Course'
-              className='col ml-2'
+              className='form-control col ml-2'
               value={this.state.course}
               onChange={this.handleCourseChange} />
           </div>
@@ -87,7 +87,7 @@ class GradeForm extends Component {
               required
               type='text'
               placeholder='Grade'
-              className='col ml-2'
+              className='form-control col ml-2'
               value={this.state.grade}
               onChange={this.handleGradeChange} />
           </div>
