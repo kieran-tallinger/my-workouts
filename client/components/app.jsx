@@ -70,7 +70,12 @@ class App extends React.Component {
     this.state.grades.map(student => {
       total += student.grade;
     });
-    return (total / this.state.grades.length).toFixed(1);
+    if (total === 0) {
+      return '';
+    } else {
+      return (total / this.state.grades.length).toFixed(1);
+    }
+
   }
 
   render() {
