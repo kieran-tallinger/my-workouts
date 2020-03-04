@@ -57,8 +57,12 @@ class GradeForm extends Component {
   }
 
   render() {
+    const header = this.props.currentlyEditing ? 'Update Grade' : 'Add a Grade';
     return (
       <div className='col'>
+        <div className='text-center pb-1'>
+          <h3>{header}</h3>
+        </div>
         <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
