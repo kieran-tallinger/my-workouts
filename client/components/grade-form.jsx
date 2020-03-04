@@ -17,7 +17,11 @@ class GradeForm extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.currentlyEditing !== prevProps.currentlyEditing) {
-      return null;
+      this.setState({
+        name: 'hi',
+        course: 'hi',
+        grade: 'hi'
+      });
     }
   }
 

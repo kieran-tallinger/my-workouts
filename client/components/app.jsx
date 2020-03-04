@@ -12,6 +12,7 @@ class App extends React.Component {
     };
     this.addGrade = this.addGrade.bind(this);
     this.deleteGrade = this.deleteGrade.bind(this);
+    this.switchFormMode = this.switchFormMode.bind(this);
   }
 
   componentDidMount() {
@@ -51,6 +52,19 @@ class App extends React.Component {
       });
   }
 
+  switchFormMode(id) {
+    if (!this.state.currentlyEditing) {
+      const gradeToUpdate = this.state.grades.filter(value => value.id === id);
+      this.setState({
+        currentlyEditing: gradeToUpdate[0]
+      });
+    } else if (this.state.currentlyEditing) {
+      this.setState({
+        currentlyEditing: null
+      });
+    }
+  }
+
   deleteGrade(id) {
     fetch(`/api/grades/${id}`, { method: 'DELETE' })
       .then(res => res.json())
@@ -82,7 +96,7 @@ class App extends React.Component {
       <div className ="container">
         <Header average={this.getAverageGrade()}/>
         <div className='row'>
-          <GradeTable grades={this.state.grades} delete={this.deleteGrade}/>
+          <GradeTable grades={this.state.grades} delete={this.deleteGrade} update={this.switchFormMode}/>
           <GradeForm onSubmit={this.addGrade} currentlyEditing={this.state.currentlyEditing}/>
         </div>
       </div>

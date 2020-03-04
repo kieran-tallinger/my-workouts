@@ -23,6 +23,12 @@
       "course": "Courage",
       "grade": 100,
       "id": 5
+    },
+    {
+      "name": "Van",
+      "course": "Web Stuff",
+      "grade": 80,
+      "id": 6
     }
   ]
 }

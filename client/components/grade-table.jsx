@@ -29,6 +29,7 @@ function GradeTable(props) {
                 course={student.course}
                 grade={student.grade}
                 delete={props.delete}
+                update={props.update}
               />
             );
           })

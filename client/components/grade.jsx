@@ -7,7 +7,7 @@ function Grade(props) {
       <td>{props.course}</td>
       <td>{props.grade}</td>
       <td className='text-center'>
-        <a>
+        <a onClick={() => props.update(props.id)}>
           <i className='fas fa-edit fa-lg mr-3'></i>
         </a>
         <a onClick={() => props.delete(props.id)}>
