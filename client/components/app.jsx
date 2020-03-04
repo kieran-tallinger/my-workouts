@@ -58,7 +58,10 @@ class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    this.getGrades();
+    const updatedGrades = this.state.grades.filter(value => value.id !== id);
+    this.setState({
+      grades: updatedGrades
+    });
   }
 
   getAverageGrade() {
