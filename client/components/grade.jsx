@@ -6,12 +6,12 @@ function Grade(props) {
       <td>{props.name}</td>
       <td>{props.course}</td>
       <td>{props.grade}</td>
-      <td>
+      <td className='text-center'>
         <a>
-          <i className='fas fa-edit fa-lg'></i>
+          <i className='fas fa-edit fa-lg pr-3'></i>
         </a>
         <a onClick={() => props.delete(props.id)}>
-          <i className='fas fa-trash-alt'></i>
+          <i className='fas fa-trash-alt fa-lg pl-3'></i>
         </a>
       </td>
     </tr>
