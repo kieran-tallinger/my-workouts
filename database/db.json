@@ -1,22 +1,3 @@
 {
-  "grades": [
-    {
-      "name": "Van",
-      "course": "Web Stuff",
-      "grade": 100,
-      "id": 1
-    },
-    {
-      "name": "Luigi",
-      "course": "Jumping",
-      "grade": 45,
-      "id": 2
-    },
-    {
-      "name": "Link",
-      "course": "Courage",
-      "grade": 99,
-      "id": 4
-    }
-  ]
+  "grades": []
 }

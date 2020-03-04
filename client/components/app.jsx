@@ -58,10 +58,6 @@ class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    const updatedGrades = this.state.grades.filter(value => { if (value.id !== id) return value; });
-    this.setState({
-      grades: updatedGrades
-    });
     this.getGrades();
   }
 
