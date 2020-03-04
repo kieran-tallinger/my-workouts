@@ -2,6 +2,12 @@ import React from 'react';
 import Grade from './grade';
 
 function GradeTable(props) {
+  let hidden = null;
+  if (props.grades.length > 0) {
+    hidden = 'd-none';
+  } else if (props.grades.length === 0) {
+    hidden = '';
+  }
   return (
     <table className='table table-bordered table-striped table-hover col'>
       <thead className='thead-dark'>
@@ -27,6 +33,9 @@ function GradeTable(props) {
             );
           })
         }
+        <tr className={hidden}>
+          <td>No Grades Were Found</td>
+        </tr>
       </tbody>
     </table>
   );

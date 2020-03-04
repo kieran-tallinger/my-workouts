@@ -1,34 +1,3 @@
 {
-  "grades": [
-    {
-      "id": 1,
-      "name": "Kyle Simpson",
-      "course": "JavaScript",
-      "grade": 100
-    },
-    {
-      "id": 3,
-      "name": "Douglas Crockford",
-      "course": "JavaScript",
-      "grade": 78
-    },
-    {
-      "name": "Van",
-      "course": "Stuff",
-      "grade": 75,
-      "id": 4
-    },
-    {
-      "name": "Mario",
-      "course": "Jumping",
-      "grade": 100,
-      "id": 5
-    },
-    {
-      "name": "Link",
-      "course": "Swordsmanship",
-      "grade": 100,
-      "id": 7
-    }
-  ]
+  "grades": []
 }
