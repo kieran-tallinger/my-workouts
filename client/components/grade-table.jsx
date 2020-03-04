@@ -9,6 +9,7 @@ function GradeTable(props) {
           <th>Student Name</th>
           <th>Course</th>
           <th>Grade</th>
+          <th>Operations</th>
         </tr>
       </thead>
       <tbody>
@@ -17,6 +18,7 @@ function GradeTable(props) {
             return (
               <Grade
                 key={student.id}
+                id={student.id}
                 name={student.name}
                 course={student.course}
                 grade={student.grade}
