@@ -50,6 +50,19 @@ class App extends React.Component {
     this.getGrades();
   }
 
+  deleteGrade(id) {
+    fetch(`/api/grades/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => { return data; })
+      .catch(error => {
+        console.error(error);
+      });
+    const updatedGrades = this.state.grades.filter(value => { if (value.id !== id) return value; });
+    this.setState({
+      grades: updatedGrades
+    });
+  }
+
   getAverageGrade() {
     let total = 0;
     this.state.grades.map(student => {
