@@ -1,7 +1,7 @@
 {
-  "name": "sgt-react",
+  "name": "my-workouts",
   "version": "1.0.0",
-  "description": "The Student Grade Table: Written in React",
+  "description": "My Personal Workouts: Written in React",
   "main": "server/index.js",
   "scripts": {
     "client": "webpack-dev-server",
@@ -46,15 +46,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Learning-Fuze/sgt-react.git"
+    "url": "git+https://github.com/kieran-tallinger/my-workouts.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Learning-Fuze/sgt-react/issues"
+    "url": "https://github.com/kieran-tallinger/my-workouts/issues"
   },
-  "homepage": "https://github.com/Learning-Fuze/sgt-react#readme",
+  "homepage": "https://github.com/kieran-tallinger/my-workouts#readme",
   "eslintIgnore": [
     "server/public/main.js"
   ],
