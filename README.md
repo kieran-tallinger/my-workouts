@@ -4,7 +4,7 @@ My Personal Workouts: Written in React
 
 ## Introduction
 
-A full stack application built with React.js for users to keep track of workout routines
+A front end application built with React.js for users to keep track of workout routines
 
 ## Technologies Used
 
