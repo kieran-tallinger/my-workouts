@@ -10,6 +10,24 @@ class RoutineForm extends Component {
     };
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentlyEditing !== prevProps.currentlyEditing) {
+      if (this.props.currentlyEditing) {
+        this.setState({
+          name: this.props.currentlyEditing.name,
+          description: this.props.currentlyEditing.description,
+          difficulty: this.props.currentlyEditing.difficulty
+        });
+      } else if (!this.props.currentlyEditing) {
+        this.setState({
+          name: '',
+          description: '',
+          difficulty: ''
+        });
+      }
+    }
+  }
+
   handleNameChange(e) {
     this.setState({
       name: e.target.value
