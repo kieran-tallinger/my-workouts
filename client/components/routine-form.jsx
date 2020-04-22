@@ -8,6 +8,11 @@ class RoutineForm extends Component {
       description: '',
       difficulty: ''
     };
+    this.handleNameChange = this.handleNameChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
+    this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleReset = this.handleReset.bind(this);
   }
 
   componentDidUpdate(prevProps) {
