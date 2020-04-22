@@ -18,5 +18,13 @@
       "reps": 20,
       "id": 3
     }
+  ],
+  "routines": [
+    {
+      "name": "Core",
+      "description": "A quick core workout for at home",
+      "difficulty": "Easy",
+      "id": 1
+    }
   ]
 }
