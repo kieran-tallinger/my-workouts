@@ -46,6 +46,29 @@ class RoutineForm extends Component {
     });
   }
 
+  handleSubmit(e) {
+    e.preventDefault();
+    const newRoutine = {
+      name: this.state.name,
+      description: this.state.description,
+      difficulty: this.state.difficulty
+    };
+    this.props.onSubmit(newRoutine);
+    this.setState({
+      name: '',
+      description: '',
+      difficulty: ''
+    });
+  }
+
+  handleReset() {
+    this.setState({
+      name: '',
+      description: '',
+      difficulty: ''
+    });
+  }
+
   render() {
     return (
       <div>
