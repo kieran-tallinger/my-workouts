@@ -75,9 +75,49 @@ class RoutineForm extends Component {
   }
 
   render() {
+    const header = this.props.currentlyEditing ? 'Update Routine' : 'Add a Routine';
+    const submitButton = this.props.currentlyEditing ? 'Update' : 'Add';
     return (
-      <div>
-
+      <div className='col'>
+        <div className='text-center pb-1'>
+          <h3>{header}</h3>
+        </div>
+        <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
+          <div className='form-row my-2'>
+            <i className=''></i>
+            <input
+              required
+              autoFocus
+              type='text'
+              placeholder='Name'
+              className='form-control col ml-2'
+              value={this.state.name}
+              onChange={this.handleNameChange}/>
+          </div>
+          <div className='form-row my-2'>
+            <i className=''></i>
+            <textarea
+              required
+              placeholder='A short description of the routines focus'
+              className='form-control col ml-2'
+              value={this.state.description}
+              onChange={this.handleDescriptionChange} />
+          </div>
+          <div>
+            <i className=''></i>
+            <input
+              required
+              type='text'
+              placeholder='Difficulty'
+              className='form-control col ml-2'
+              value={this.state.difficulty}
+              onChange={this.handleDifficultyChange} />
+          </div>
+          <div className='form-row my-3 justify-content-end'>
+            <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
+            <button type='reset' className='btn btn-warning mx-1'>Cancel</button>
+          </div>
+        </form>
       </div>
     );
   }
