@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-class GradeForm extends Component {
+class ExerciseForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      course: '',
-      grade: ''
+      sets: '',
+      reps: ''
     };
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleCourseChange = this.handleCourseChange.bind(this);
-    this.handleGradeChange = this.handleGradeChange.bind(this);
+    this.handleSetsChange = this.handleSetsChange.bind(this);
+    this.handleRepsChange = this.handleRepsChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -20,14 +20,14 @@ class GradeForm extends Component {
       if (this.props.currentlyEditing) {
         this.setState({
           name: this.props.currentlyEditing.name,
-          course: this.props.currentlyEditing.course,
-          grade: this.props.currentlyEditing.grade
+          sets: this.props.currentlyEditing.sets,
+          reps: this.props.currentlyEditing.reps
         });
       } else if (!this.props.currentlyEditing) {
         this.setState({
           name: '',
-          course: '',
-          grade: ''
+          sets: '',
+          reps: ''
         });
       }
     }
@@ -39,43 +39,43 @@ class GradeForm extends Component {
     });
   }
 
-  handleCourseChange(e) {
+  handleSetsChange(e) {
     this.setState({
-      course: e.target.value
+      sets: e.target.value
     });
   }
 
-  handleGradeChange(e) {
+  handleRepsChange(e) {
     this.setState({
-      grade: e.target.value
+      reps: e.target.value
     });
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const newGrade = {
+    const newExercise = {
       name: this.state.name,
-      course: this.state.course,
-      grade: parseInt(this.state.grade)
+      sets: parseInt(this.state.sets),
+      reps: parseInt(this.state.reps)
     };
-    this.props.onSubmit(newGrade);
+    this.props.onSubmit(newExercise);
     this.setState({
       name: '',
-      course: '',
-      grade: ''
+      sets: '',
+      reps: ''
     });
   }
 
   handleReset() {
     this.setState({
       name: '',
-      course: '',
-      grade: ''
+      sets: '',
+      reps: ''
     });
   }
 
   render() {
-    const header = this.props.currentlyEditing ? 'Update Grade' : 'Add a Grade';
+    const header = this.props.currentlyEditing ? 'Update Exercise' : 'Add an Exercise';
     const submitButton = this.props.currentlyEditing ? 'Update' : 'Add';
     return (
       <div className='col'>
@@ -99,20 +99,20 @@ class GradeForm extends Component {
             <input
               required
               type='text'
-              placeholder='Course'
+              placeholder='Sets'
               className='form-control col ml-2'
-              value={this.state.course}
-              onChange={this.handleCourseChange} />
+              value={this.state.sets}
+              onChange={this.handleSetsChange} />
           </div>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-graduation-cap py-2 mx-2 fa-lg'></i>
             <input
               required
               type='text'
-              placeholder='Grade'
+              placeholder='Reps'
               className='form-control col ml-2'
-              value={this.state.grade}
-              onChange={this.handleGradeChange} />
+              value={this.state.reps}
+              onChange={this.handleRepsChange} />
           </div>
           <div className='form-row my-3 justify-content-end'>
             <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
@@ -124,4 +124,4 @@ class GradeForm extends Component {
   }
 }
 
-export default GradeForm;
+export default ExerciseForm;

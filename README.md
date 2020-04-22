@@ -29,4 +29,4 @@ Try the application live at [my portfolio website](https://my-workouts.kierantal
 
 ## Preview
 
-![SGT React](sgt-react.gif)
+![My Workouts](my-workouts-preview.gif)

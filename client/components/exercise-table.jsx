@@ -1,33 +1,33 @@
 import React from 'react';
-import Grade from './grade';
+import Exercise from './exercise';
 
-function GradeTable(props) {
+function ExerciseTable(props) {
   let hidden = null;
-  if (props.grades.length > 0) {
+  if (props.exercises.length > 0) {
     hidden = 'd-none';
-  } else if (props.grades.length === 0) {
+  } else if (props.exercises.length === 0) {
     hidden = '';
   }
   return (
     <table className='table table-bordered table-striped table-hover col'>
       <thead className='thead-dark'>
         <tr>
-          <th>Student Name</th>
-          <th>Course</th>
-          <th>Grade</th>
+          <th>Exercise</th>
+          <th>Sets</th>
+          <th>Reps</th>
           <th>Operations</th>
         </tr>
       </thead>
       <tbody>
         {
-          props.grades.map(student => {
+          props.exercises.map(exercise => {
             return (
-              <Grade
-                key={student.id}
-                id={student.id}
-                name={student.name}
-                course={student.course}
-                grade={student.grade}
+              <Exercise
+                key={exercise.id}
+                id={exercise.id}
+                name={exercise.name}
+                sets={exercise.sets}
+                reps={exercise.reps}
                 delete={props.delete}
                 update={props.update}
               />
@@ -35,7 +35,7 @@ function GradeTable(props) {
           })
         }
         <tr className={hidden}>
-          <td>No Grades Were Found</td>
+          <td>No Exercises Were Found</td>
         </tr>
       </tbody>
     </table>
@@ -43,4 +43,4 @@ function GradeTable(props) {
 
 }
 
-export default GradeTable;
+export default ExerciseTable;
