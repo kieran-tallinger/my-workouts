@@ -1,30 +1,30 @@
 import React from 'react';
 import Header from './header';
-import GradeTable from './grade-table';
-import GradeForm from './grade-form';
+import ExerciseTable from './exercise-table';
+import ExerciseForm from './exercise-form';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      grades: [],
+      exercises: [],
       currentlyEditing: null
     };
-    this.submitGrade = this.submitGrade.bind(this);
-    this.deleteGrade = this.deleteGrade.bind(this);
+    this.submitExercise = this.submitExercise.bind(this);
+    this.deleteExercise = this.deleteExercise.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
   }
 
   componentDidMount() {
-    this.getGrades();
+    this.getExercises();
   }
 
-  getGrades() {
-    fetch('/api/grades')
+  getExercises() {
+    fetch('/api/exercises')
       .then(res => res.json())
       .then(data => {
         this.setState({
-          grades: data
+          exercises: data
         });
       })
       .catch(error => {
@@ -32,36 +32,36 @@ class App extends React.Component {
       });
   }
 
-  submitGrade(newGrade) {
+  submitExercise(newExercise) {
     if (this.state.currentlyEditing) {
       const fetchParams = {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newGrade)
+        body: JSON.stringify(newExercise)
       };
-      fetch(`/api/grades/${this.state.currentlyEditing.id}`, fetchParams)
+      fetch(`/api/exercises/${this.state.currentlyEditing.id}`, fetchParams)
         .then(res => res.json())
         .then(data => { return data; })
         .catch(error => {
           console.error(error);
         });
       this.switchFormMode();
-      this.getGrades();
+      this.getExercises();
     } else if (!this.state.currentlyEditing) {
       const fetchParams = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(newGrade)
+        body: JSON.stringify(newExercise)
       };
-      fetch('/api/grades', fetchParams)
+      fetch('/api/exercises', fetchParams)
         .then(res => res.json())
         .then(data => {
           this.setState({
-            grades: this.state.grades.concat(data)
+            exercises: this.state.exercises.concat(data)
           });
         })
         .catch(error => {
@@ -72,9 +72,9 @@ class App extends React.Component {
 
   switchFormMode(id) {
     if (!this.state.currentlyEditing) {
-      const gradeToUpdate = this.state.grades.filter(value => value.id === id);
+      const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
       this.setState({
-        currentlyEditing: gradeToUpdate[0]
+        currentlyEditing: exerciseToUpdate[0]
       });
     } else if (this.state.currentlyEditing) {
       this.setState({
@@ -83,39 +83,26 @@ class App extends React.Component {
     }
   }
 
-  deleteGrade(id) {
-    fetch(`/api/grades/${id}`, { method: 'DELETE' })
+  deleteExercise(id) {
+    fetch(`/api/exercises/${id}`, { method: 'DELETE' })
       .then(res => res.json())
       .then(data => { return data; })
       .catch(error => {
         console.error(error);
       });
-    const updatedGrades = this.state.grades.filter(value => value.id !== id);
+    const updatedExercise = this.state.exercises.filter(value => value.id !== id);
     this.setState({
-      grades: updatedGrades
+      exercises: updatedExercise
     });
-  }
-
-  getAverageGrade() {
-    let total = 0;
-    this.state.grades.map(student => {
-      total += student.grade;
-    });
-    if (total === 0) {
-      return '';
-    } else {
-      return (total / this.state.grades.length).toFixed(1);
-    }
-
   }
 
   render() {
     return (
       <div className ="container">
-        <Header average={this.getAverageGrade()}/>
+        <Header/>
         <div className='row'>
-          <GradeTable grades={this.state.grades} delete={this.deleteGrade} update={this.switchFormMode}/>
-          <GradeForm onSubmit={this.submitGrade} currentlyEditing={this.state.currentlyEditing}/>
+          <ExerciseTable exercises={this.state.exercises} delete={this.deleteExercise} update={this.switchFormMode}/>
+          <ExerciseForm onSubmit={this.submitExercise} currentlyEditing={this.state.currentlyEditing}/>
         </div>
       </div>
     );

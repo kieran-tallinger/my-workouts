@@ -1,34 +1,22 @@
 {
-  "grades": [
+  "exercises": [
     {
-      "name": "Mario",
-      "course": "Jumping",
-      "grade": 100,
+      "name": "Sit Ups",
+      "sets": 3,
+      "reps": 100,
+      "id": 1
+    },
+    {
+      "name": "Push Ups",
+      "sets": 4,
+      "reps": 25,
       "id": 2
     },
     {
-      "name": "Luigi",
-      "course": "Falling",
-      "grade": 100,
+      "name": "Squats",
+      "sets": 5,
+      "reps": 20,
       "id": 3
-    },
-    {
-      "name": "Samus",
-      "course": "Target Practice",
-      "grade": 99,
-      "id": 4
-    },
-    {
-      "name": "Link",
-      "course": "Courage",
-      "grade": 100,
-      "id": 5
-    },
-    {
-      "name": "Van",
-      "course": "Web Stuff",
-      "grade": 80,
-      "id": 6
     }
   ]
 }

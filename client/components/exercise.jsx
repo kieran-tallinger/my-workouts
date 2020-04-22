@@ -1,11 +1,11 @@
 import React from 'react';
 
-function Grade(props) {
+function Exercise(props) {
   return (
     <tr>
       <td>{props.name}</td>
-      <td>{props.course}</td>
-      <td>{props.grade}</td>
+      <td>{props.sets}</td>
+      <td>{props.reps}</td>
       <td className='text-center'>
         <a onClick={() => props.update(props.id)}>
           <i className='fas fa-edit fa-lg mr-3'></i>
@@ -18,4 +18,4 @@ function Grade(props) {
   );
 }
 
-export default Grade;
+export default Exercise;
