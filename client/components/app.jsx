@@ -85,6 +85,44 @@ class App extends React.Component {
     }
   }
 
+  submitRoutine(newRoutine) {
+    if (this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRoutine)
+      };
+      fetch(`/api/routines/${this.state.currentlyEditing.id}`, fetchParams)
+        .then(res => res.json())
+        .then(data => { return data; })
+        .catch(error => {
+          console.error(error);
+        });
+      this.switchFormMode();
+      this.getRoutines();
+    } else if (!this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRoutine)
+      };
+      fetch('/api/routines', fetchParams)
+        .then(res => res.json())
+        .then(data => {
+          this.setState({
+            routines: this.state.routines.concat(data)
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
+  }
+
   deleteExercise(id) {
     fetch(`/api/exercises/${id}`, { method: 'DELETE' })
       .then(res => res.json())
