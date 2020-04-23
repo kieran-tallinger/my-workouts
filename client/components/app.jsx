@@ -32,6 +32,19 @@ class App extends React.Component {
       });
   }
 
+  getRoutines() {
+    fetch('/api/routines')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          routines: data
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   submitExercise(newExercise) {
     if (this.state.currentlyEditing) {
       const fetchParams = {
