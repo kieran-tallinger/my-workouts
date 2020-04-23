@@ -12,8 +12,11 @@ class App extends React.Component {
       currentlyEditing: null
     };
     this.submitExercise = this.submitExercise.bind(this);
+    this.submitRoutine = this.submitRoutine.bind(this);
     this.deleteExercise = this.deleteExercise.bind(this);
+    this.deleteRoutine = this.deleteRoutine.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
+
   }
 
   componentDidMount() {
