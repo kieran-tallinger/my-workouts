@@ -8,6 +8,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       exercises: [],
+      routines: [],
       currentlyEditing: null
     };
     this.submitExercise = this.submitExercise.bind(this);
@@ -17,6 +18,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getExercises();
+    this.getRoutines();
   }
 
   getExercises() {
