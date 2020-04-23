@@ -1,7 +1,10 @@
+/*eslint-disable*/
 import React from 'react';
 import Header from './header';
 import ExerciseTable from './exercise-table';
 import ExerciseForm from './exercise-form';
+import RoutineTable from './routine-table';
+import RoutineForm from './routine-form';
 
 class App extends React.Component {
   constructor(props) {
