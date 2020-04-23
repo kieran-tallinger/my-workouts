@@ -85,6 +85,32 @@ class App extends React.Component {
     }
   }
 
+  deleteExercise(id) {
+    fetch(`/api/exercises/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => { return data; })
+      .catch(error => {
+        console.error(error);
+      });
+    const updatedExercises = this.state.exercises.filter(value => value.id !== id);
+    this.setState({
+      exercises: updatedExercises
+    });
+  }
+
+  deleteRoutine(id) {
+    fetch(`/api/routines/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => { return data; })
+      .catch(error => {
+        console.error(error);
+      });
+    const updatedRoutines = this.state.routines.filter(value => value.id !== id);
+    this.setState({
+      routines: updatedRoutines
+    });
+  }
+
   switchFormMode(id) {
     if (!this.state.currentlyEditing) {
       const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
@@ -96,19 +122,6 @@ class App extends React.Component {
         currentlyEditing: null
       });
     }
-  }
-
-  deleteExercise(id) {
-    fetch(`/api/exercises/${id}`, { method: 'DELETE' })
-      .then(res => res.json())
-      .then(data => { return data; })
-      .catch(error => {
-        console.error(error);
-      });
-    const updatedExercise = this.state.exercises.filter(value => value.id !== id);
-    this.setState({
-      exercises: updatedExercise
-    });
   }
 
   render() {
