@@ -24,7 +24,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.getExercises();
     this.getRoutines();
   }
 
@@ -154,6 +153,10 @@ class App extends React.Component {
     this.setState({
       routines: updatedRoutines
     });
+  }
+
+  selectRoutine(id) {
+
   }
 
   switchView(newView) {

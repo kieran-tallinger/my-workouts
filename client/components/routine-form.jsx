@@ -6,7 +6,8 @@ class RoutineForm extends Component {
     this.state = {
       name: '',
       description: '',
-      difficulty: ''
+      difficulty: '',
+      exercises: []
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -27,7 +28,8 @@ class RoutineForm extends Component {
         this.setState({
           name: '',
           description: '',
-          difficulty: ''
+          difficulty: '',
+          exercises: []
         });
       }
     }
@@ -56,13 +58,15 @@ class RoutineForm extends Component {
     const newRoutine = {
       name: this.state.name,
       description: this.state.description,
-      difficulty: this.state.difficulty
+      difficulty: this.state.difficulty,
+      exercises: []
     };
     this.props.onSubmit(newRoutine);
     this.setState({
       name: '',
       description: '',
-      difficulty: ''
+      difficulty: '',
+      exercises: []
     });
   }
 
@@ -70,7 +74,8 @@ class RoutineForm extends Component {
     this.setState({
       name: '',
       description: '',
-      difficulty: ''
+      difficulty: '',
+      exercises: []
     });
   }
 
@@ -84,7 +89,7 @@ class RoutineForm extends Component {
         </div>
         <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
           <div className='form-row my-2'>
-            <i className=''></i>
+            <i className='col-1 fas fa-dumbbell fa-lg py-2 mx-2'></i>
             <input
               required
               autoFocus
@@ -95,7 +100,7 @@ class RoutineForm extends Component {
               onChange={this.handleNameChange}/>
           </div>
           <div className='form-row my-2'>
-            <i className=''></i>
+            <i className='col-1 fas fa-pencil-alt fa-lg py-2 mx-2'></i>
             <textarea
               required
               placeholder='A short description of the routines focus'
@@ -103,8 +108,8 @@ class RoutineForm extends Component {
               value={this.state.description}
               onChange={this.handleDescriptionChange} />
           </div>
-          <div>
-            <i className=''></i>
+          <div className='form-row my-2'>
+            <i className='col-1 fas fa-exclamation-circle fa-lg py-2 mx-2'></i>
             <input
               required
               type='text'

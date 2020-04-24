@@ -22,9 +22,17 @@
   "routines": [
     {
       "name": "Core",
-      "description": "A quick core workout for at home",
+      "description": "A short core burn for at home",
       "difficulty": "Easy",
+      "exercises": [],
       "id": 1
+    },
+    {
+      "name": "Arms",
+      "description": "GET SO STRONK",
+      "difficulty": "Medium",
+      "exercises": [],
+      "id": 2
     }
   ]
 }
