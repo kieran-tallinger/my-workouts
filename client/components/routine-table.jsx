@@ -26,8 +26,8 @@ function RoutinesTable(props) {
                 key={routine.id}
                 id={routine.id}
                 name={routine.name}
-                sets={routine.description}
-                reps={routine.difficulty}
+                description={routine.description}
+                difficulty={routine.difficulty}
                 delete={props.delete}
                 update={props.update}
               />

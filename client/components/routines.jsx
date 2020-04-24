@@ -11,10 +11,10 @@ function Routine(props) {
           <i></i>
         </a>
         <a onClick={() => props.update(props.id)}>
-          <i></i>
+          <i className='fas fa-edit fa-lg mr-3'></i>
         </a>
         <a onClick={() => props.delete(props.id)}>
-          <i></i>
+          <i className='fas fa-trash-alt fa-lg ml-3'></i>
         </a>
       </td>
     </tr>
