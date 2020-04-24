@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import Header from './header';
 import ExerciseTable from './exercise-table';
@@ -10,6 +9,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      view: 'routines',
       exercises: [],
       routines: [],
       currentlyEditing: null
@@ -19,7 +19,8 @@ class App extends React.Component {
     this.deleteExercise = this.deleteExercise.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
-
+    this.switchView = this.switchView.bind(this);
+    this.createView = this.createView.bind(this);
   }
 
   componentDidMount() {
@@ -155,6 +156,12 @@ class App extends React.Component {
     });
   }
 
+  switchView(newView) {
+    this.setState({
+      view: newView
+    });
+  }
+
   switchFormMode(id) {
     if (!this.state.currentlyEditing) {
       const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
@@ -168,14 +175,30 @@ class App extends React.Component {
     }
   }
 
-  render() {
-    return (
-      <div className ="container">
-        <Header/>
+  createView() {
+    if (this.state.view === 'routines') {
+      return (
+        <div className='row'>
+          <RoutineTable routines={this.state.routines} delete={this.deleteRoutine} update={this.switchFormMode}/>
+          <RoutineForm onSubmit={this.submitRoutine} currentlyEditing={this.state.currentlyEditing}/>
+        </div>
+      );
+    } else if (this.state.view === 'exercises') {
+      return (
         <div className='row'>
           <ExerciseTable exercises={this.state.exercises} delete={this.deleteExercise} update={this.switchFormMode}/>
           <ExerciseForm onSubmit={this.submitExercise} currentlyEditing={this.state.currentlyEditing}/>
         </div>
+      );
+    }
+  }
+
+  render() {
+    const main = this.createView();
+    return (
+      <div className ="container">
+        <Header/>
+        {main}
       </div>
     );
   }
