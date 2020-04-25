@@ -12,6 +12,7 @@ class RoutineForm extends Component {
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleDifficultyChange = this.handleDifficultyChange.bind(this);
+    this.handleExercisesChange = this.handleExercisesChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -53,13 +54,19 @@ class RoutineForm extends Component {
     });
   }
 
+  handleExercisesChange(e) {
+    this.setState({
+      exercises: this.state.exercises.concat(e.target.value)
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const newRoutine = {
       name: this.state.name,
       description: this.state.description,
       difficulty: this.state.difficulty,
-      exercises: []
+      exercises: this.state.exercises
     };
     this.props.onSubmit(newRoutine);
     this.setState({
@@ -79,9 +86,32 @@ class RoutineForm extends Component {
     });
   }
 
+  createExercisesList() {
+    return (
+      <select
+        required
+        multiple={true}
+        size='3'
+        className='form-control col ml-2'
+        value={this.state.exercises}
+        onChange={this.handleExercisesChange}>
+        {
+          this.props.exercises.map(exercise => {
+            return (
+              <option key={exercise.id} value = {exercise.id}>
+                {exercise.name}
+              </option>
+            );
+          })
+        }
+      </select>
+    );
+  }
+
   render() {
     const header = this.props.currentlyEditing ? 'Update Routine' : 'Add a Routine';
     const submitButton = this.props.currentlyEditing ? 'Update' : 'Add';
+    const exercisesList = this.createExercisesList();
     return (
       <div className='col'>
         <div className='text-center pb-1'>
@@ -121,6 +151,10 @@ class RoutineForm extends Component {
               <option value='Hard'>Hard</option>
               <option value='UBER'>UBER</option>
             </select>
+          </div>
+          <div className='form-row my-2'>
+            <i className='col-1 fas fa-running fa-lg py-2 mx-2'></i>
+            {exercisesList}
           </div>
           <div className='form-row my-3 justify-content-end'>
             <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>

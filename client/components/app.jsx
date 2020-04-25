@@ -25,6 +25,7 @@ class App extends React.Component {
 
   componentDidMount() {
     this.getRoutines();
+    this.getExercises();
   }
 
   getExercises() {
@@ -183,7 +184,7 @@ class App extends React.Component {
       return (
         <div className='row'>
           <RoutineTable routines={this.state.routines} delete={this.deleteRoutine} update={this.switchFormMode}/>
-          <RoutineForm onSubmit={this.submitRoutine} currentlyEditing={this.state.currentlyEditing}/>
+          <RoutineForm exercises={this.state.exercises} onSubmit={this.submitRoutine} currentlyEditing={this.state.currentlyEditing}/>
         </div>
       );
     } else if (this.state.view === 'exercises') {

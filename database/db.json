@@ -22,16 +22,20 @@
   "routines": [
     {
       "name": "Core",
-      "description": "A short core burn for at home",
+      "description": "A quick core toning workout for home",
       "difficulty": "Easy",
-      "exercises": [],
+      "exercises": [
+        "1"
+      ],
       "id": 1
     },
     {
       "name": "Arms",
-      "description": "GET SO STRONK",
-      "difficulty": "Medium",
-      "exercises": [],
+      "description": "GET SO STRONK ",
+      "difficulty": "UBER",
+      "exercises": [
+        "2"
+      ],
       "id": 2
     }
   ]
