@@ -12,12 +12,14 @@ class App extends React.Component {
       view: 'routines',
       exercises: [],
       routines: [],
+      selectedRoutine: null,
       currentlyEditing: null
     };
     this.submitExercise = this.submitExercise.bind(this);
     this.submitRoutine = this.submitRoutine.bind(this);
     this.deleteExercise = this.deleteExercise.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
+    this.selectRoutine = this.selectRoutine.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
     this.switchView = this.switchView.bind(this);
     this.createView = this.createView.bind(this);
@@ -157,7 +159,17 @@ class App extends React.Component {
   }
 
   selectRoutine(id) {
-
+    fetch(`/api/routines/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          selectedRoutine: data
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    this.switchView('exercises');
   }
 
   switchView(newView) {
@@ -183,17 +195,53 @@ class App extends React.Component {
     if (this.state.view === 'routines') {
       return (
         <div className='row'>
-          <RoutineTable routines={this.state.routines} delete={this.deleteRoutine} update={this.switchFormMode}/>
-          <RoutineForm exercises={this.state.exercises} onSubmit={this.submitRoutine} currentlyEditing={this.state.currentlyEditing}/>
+          <RoutineTable
+            routines={this.state.routines}
+            select={this.selectRoutine}
+            delete={this.deleteRoutine}
+            update={this.switchFormMode}/>
+          <RoutineForm
+            exercises={this.state.exercises}
+            onSubmit={this.submitRoutine}
+            currentlyEditing={this.state.currentlyEditing}/>
         </div>
       );
     } else if (this.state.view === 'exercises') {
-      return (
-        <div className='row'>
-          <ExerciseTable exercises={this.state.exercises} delete={this.deleteExercise} update={this.switchFormMode}/>
-          <ExerciseForm onSubmit={this.submitExercise} currentlyEditing={this.state.currentlyEditing}/>
-        </div>
-      );
+      if (this.state.selectedRoutine) {
+        return (
+          <div className='row'>
+            <ExerciseTable
+              exercises={
+                this.state.exercises.filter(exercise => {
+                  for (let exerciseIndex = this.state.selectedRoutine.exercises.length; exerciseIndex > 0; exerciseIndex--) {
+                    if (exercise.id === parseInt(this.state.selectedRoutine.exercises[exerciseIndex - 1])) {
+                      return true;
+                    } else {
+                      return false;
+                    }
+                  }
+                })
+              }
+              delete={this.deleteExercise}
+              update={this.switchFormMode} />
+            <ExerciseForm
+              onSubmit={this.submitExercise}
+              currentlyEditing={this.state.currentlyEditing} />
+          </div>
+        );
+      } else if (!this.state.selectedRoutine) {
+        return (
+          <div className='row'>
+            <ExerciseTable
+              exercises={this.state.exercises}
+              delete={this.deleteExercise}
+              update={this.switchFormMode}/>
+            <ExerciseForm
+              onSubmit={this.submitExercise}
+              currentlyEditing={this.state.currentlyEditing}/>
+          </div>
+        );
+      }
     }
   }
 

@@ -28,6 +28,7 @@ function RoutinesTable(props) {
                 name={routine.name}
                 description={routine.description}
                 difficulty={routine.difficulty}
+                select={props.select}
                 delete={props.delete}
                 update={props.update}
               />
