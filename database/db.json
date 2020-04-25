@@ -8,14 +8,52 @@
     },
     {
       "name": "Push Ups",
-      "sets": 4,
-      "reps": 25,
+      "sets": 5,
+      "reps": 20,
       "id": 2
     },
     {
       "name": "Squats",
       "sets": 5,
       "reps": 20,
+      "id": 3
+    },
+    {
+      "name": "Van-Ups",
+      "sets": 10,
+      "reps": 100,
+      "id": 4
+    }
+  ],
+  "routines": [
+    {
+      "name": "Core",
+      "description": "A quick core toning workout for home",
+      "difficulty": "Easy",
+      "exercises": [
+        "1"
+      ],
+      "id": 1
+    },
+    {
+      "name": "Arms",
+      "description": "A hard workout for maximizing strength",
+      "difficulty": "Hard",
+      "exercises": [
+        "1",
+        "2"
+      ],
+      "id": 2
+    },
+    {
+      "name": "General",
+      "description": "A general workout for muscle development",
+      "difficulty": "Hard",
+      "exercises": [
+        "1",
+        "2",
+        "3"
+      ],
       "id": 3
     }
   ]
