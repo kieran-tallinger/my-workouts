@@ -6,7 +6,7 @@ class RoutineForm extends Component {
     this.state = {
       name: '',
       description: '',
-      difficulty: '',
+      difficulty: 'Medium',
       exercises: []
     };
     this.handleNameChange = this.handleNameChange.bind(this);
@@ -28,7 +28,7 @@ class RoutineForm extends Component {
         this.setState({
           name: '',
           description: '',
-          difficulty: '',
+          difficulty: 'Medium',
           exercises: []
         });
       }
@@ -74,7 +74,7 @@ class RoutineForm extends Component {
     this.setState({
       name: '',
       description: '',
-      difficulty: '',
+      difficulty: 'Medium',
       exercises: []
     });
   }
@@ -110,13 +110,17 @@ class RoutineForm extends Component {
           </div>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-exclamation-circle fa-lg py-2 mx-2'></i>
-            <input
+            <select
               required
-              type='text'
-              placeholder='Difficulty'
               className='form-control col ml-2'
               value={this.state.difficulty}
-              onChange={this.handleDifficultyChange} />
+              onChange={this.handleDifficultyChange}>
+              <option value='Warm Up'>Warm Up</option>
+              <option value='Easy'>Easy</option>
+              <option value='Medium'>Medium</option>
+              <option value='Hard'>Hard</option>
+              <option value='UBER'>UBER</option>
+            </select>
           </div>
           <div className='form-row my-3 justify-content-end'>
             <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
