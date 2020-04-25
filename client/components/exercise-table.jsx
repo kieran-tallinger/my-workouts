@@ -9,7 +9,7 @@ function ExerciseTable(props) {
     hidden = '';
   }
   return (
-    <div>
+    <div className='col mt-5'>
       <table className='table table-bordered table-striped table-hover col'>
         <thead className='thead-dark'>
           <tr>

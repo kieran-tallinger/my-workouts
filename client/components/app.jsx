@@ -249,7 +249,7 @@ class App extends React.Component {
     const main = this.createView();
     return (
       <div className ="container">
-        <Header/>
+        <Header toExercise={this.switchView}/>
         {main}
       </div>
     );
