@@ -17,6 +17,12 @@
       "sets": 5,
       "reps": 20,
       "id": 3
+    },
+    {
+      "name": "Van-Ups",
+      "sets": 10,
+      "reps": 100,
+      "id": 4
     }
   ],
   "routines": [
@@ -31,9 +37,10 @@
     },
     {
       "name": "Arms",
-      "description": "GET SO STRONK ",
-      "difficulty": "UBER",
+      "description": "A hard workout for maximizing strength",
+      "difficulty": "Hard",
       "exercises": [
+        "1",
         "2"
       ],
       "id": 2

@@ -179,16 +179,30 @@ class App extends React.Component {
   }
 
   switchFormMode(id) {
-    if (!this.state.currentlyEditing) {
-      const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
-      this.setState({
-        currentlyEditing: exerciseToUpdate[0]
-      });
-    } else if (this.state.currentlyEditing) {
-      this.setState({
-        currentlyEditing: null
-      });
+    if (this.state.view === 'routines') {
+      if (!this.state.currentlyEditing) {
+        const routineToUpdate = this.state.routines.filter(value => value.id === id);
+        this.setState({
+          currentlyEditing: routineToUpdate[0]
+        });
+      } else if (this.state.currentlyEditing) {
+        this.setState({
+          currentlyEditing: null
+        });
+      }
+    } else if (this.state.view === 'exercises') {
+      if (!this.state.currentlyEditing) {
+        const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
+        this.setState({
+          currentlyEditing: exerciseToUpdate[0]
+        });
+      } else if (this.state.currentlyEditing) {
+        this.setState({
+          currentlyEditing: null
+        });
+      }
     }
+
   }
 
   createView() {
