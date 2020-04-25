@@ -8,14 +8,14 @@
     },
     {
       "name": "Push Ups",
-      "sets": 4,
-      "reps": 25,
+      "sets": 5,
+      "reps": 20,
       "id": 2
     },
     {
       "name": "Squats",
       "sets": 5,
-      "reps": 13,
+      "reps": 20,
       "id": 3
     }
   ],
@@ -37,6 +37,17 @@
         "2"
       ],
       "id": 2
+    },
+    {
+      "name": "General",
+      "description": "A general workout for muscle development",
+      "difficulty": "Hard",
+      "exercises": [
+        "1",
+        "2",
+        "3"
+      ],
+      "id": 3
     }
   ]
 }

@@ -213,17 +213,16 @@ class App extends React.Component {
             <ExerciseTable
               exercises={
                 this.state.exercises.filter(exercise => {
-                  for (let exerciseIndex = this.state.selectedRoutine.exercises.length; exerciseIndex > 0; exerciseIndex--) {
-                    if (exercise.id === parseInt(this.state.selectedRoutine.exercises[exerciseIndex - 1])) {
-                      return true;
-                    } else {
-                      return false;
-                    }
+                  if (this.state.selectedRoutine.exercises.includes((exercise.id).toString())) {
+                    return true;
+                  } else {
+                    return false;
                   }
                 })
               }
               delete={this.deleteExercise}
-              update={this.switchFormMode} />
+              update={this.switchFormMode}
+              back={this.switchView} />
             <ExerciseForm
               onSubmit={this.submitExercise}
               currentlyEditing={this.state.currentlyEditing} />
@@ -235,7 +234,8 @@ class App extends React.Component {
             <ExerciseTable
               exercises={this.state.exercises}
               delete={this.deleteExercise}
-              update={this.switchFormMode}/>
+              update={this.switchFormMode}
+              back={this.switchView}/>
             <ExerciseForm
               onSubmit={this.submitExercise}
               currentlyEditing={this.state.currentlyEditing}/>
