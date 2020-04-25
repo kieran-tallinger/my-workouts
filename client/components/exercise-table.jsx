@@ -40,7 +40,11 @@ function ExerciseTable(props) {
           </tr>
         </tbody>
       </table>
-      <button className='btn btn-danger' onClick={() => props.back('routines')}>Back to Routines</button>
+      <button
+        className='btn btn-danger'
+        onClick={() => props.back('routines')}>
+        Back to Routines
+      </button>
     </div>
   );
 
