@@ -21,6 +21,7 @@ class App extends React.Component {
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.selectRoutine = this.selectRoutine.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
+    this.viewAllExercises = this.viewAllExercises.bind(this);
     this.switchView = this.switchView.bind(this);
     this.createView = this.createView.bind(this);
   }
@@ -172,6 +173,13 @@ class App extends React.Component {
     this.switchView('exercises');
   }
 
+  viewAllExercises() {
+    this.setState({
+      selectedRoutine: null,
+      view: 'exercises'
+    });
+  }
+
   switchView(newView) {
     this.setState({
       view: newView
@@ -263,7 +271,7 @@ class App extends React.Component {
     const main = this.createView();
     return (
       <div className ="container">
-        <Header toExercise={this.switchView}/>
+        <Header toExercise={this.viewAllExercises}/>
         {main}
       </div>
     );
