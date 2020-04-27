@@ -19,42 +19,53 @@
       "id": 3
     },
     {
-      "name": "Sit Ups",
-      "sets": 5,
-      "reps": 50,
+      "name": "Suit Cases",
+      "sets": 2,
+      "reps": 10,
       "id": 4
+    },
+    {
+      "name": "Sit ups",
+      "sets": 3,
+      "reps": 35,
+      "id": 5
+    },
+    {
+      "name": "Kip Ups",
+      "sets": 10,
+      "reps": 5,
+      "id": 6
+    },
+    {
+      "name": "Lunges",
+      "sets": 3,
+      "reps": 20,
+      "id": 7
     }
   ],
   "routines": [
     {
-      "name": "Core",
-      "description": "A quick core toning workout for home",
-      "difficulty": "Easy",
-      "exercises": [
-        "4"
-      ],
-      "id": 1
-    },
-    {
-      "name": "Arms",
-      "description": "A hard workout for maximizing strength",
-      "difficulty": "Hard",
-      "exercises": [
-        "3"
-      ],
-      "id": 2
-    },
-    {
       "name": "General",
       "description": "A general workout for muscle development",
-      "difficulty": "Hard",
+      "difficulty": "Easy",
       "exercises": [
         "1",
-        "2",
-        "3",
-        "4"
+        "5"
       ],
       "id": 3
+    },
+    {
+      "name": "Core and Legs",
+      "description": "A quick workout for core and leg strength building",
+      "difficulty": "Medium",
+      "exercises": [
+        "3",
+        "4",
+        "5",
+        "3",
+        "7"
+      ],
+      "id": 4
     }
   ]
 }
