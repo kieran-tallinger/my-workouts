@@ -1,4 +1,3 @@
-require('dotenv/config');
 const path = require('path');
 
 const srcPath = path.resolve(__dirname, 'client');
