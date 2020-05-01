@@ -98,7 +98,7 @@ class RoutineForm extends Component {
         {
           this.props.exercises.map(exercise => {
             return (
-              <option key={exercise.id} value = {exercise.id}>
+              <option key={exercise.exerciseId} value={exercise.exerciseId}>
                 {exercise.name}
               </option>
             );
