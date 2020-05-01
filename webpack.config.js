@@ -1,13 +1,14 @@
+require('dotenv/config');
 const path = require('path');
 
-const srcPath = path.resolve(__dirname, 'client');
-const publicPath = path.resolve(__dirname, 'server/public');
+const clientPath = path.resolve(__dirname, 'client/');
+const publicPath = path.resolve(__dirname, 'server/public/');
 
 module.exports = {
   resolve: {
     extensions: ['.js', '.jsx']
   },
-  entry: './client',
+  entry: clientPath,
   output: {
     path: publicPath
   },
@@ -15,7 +16,6 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        include: srcPath,
         use: {
           loader: 'babel-loader',
           options: {
@@ -32,6 +32,7 @@ module.exports = {
     host: '0.0.0.0',
     port: process.env.DEV_SERVER_PORT,
     contentBase: publicPath,
+    historyApiFallback: true,
     watchContentBase: true,
     stats: 'minimal',
     proxy: {
