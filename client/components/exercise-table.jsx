@@ -24,8 +24,8 @@ function ExerciseTable(props) {
             props.exercises.map(exercise => {
               return (
                 <Exercise
-                  key={exercise.id}
-                  id={exercise.id}
+                  key={exercise.exerciseId}
+                  id={exercise.exerciseId}
                   name={exercise.name}
                   sets={exercise.sets}
                   reps={exercise.reps}
