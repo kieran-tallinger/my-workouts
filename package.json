@@ -12,7 +12,7 @@
     "build": "webpack --mode=production",
     "start": "NODE_ENV=production node server/index.js"
   },
-  "nodemonConfig":{
+  "nodemonConfig": {
     "watch": [
       "server/"
     ],
