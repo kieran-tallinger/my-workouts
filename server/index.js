@@ -33,6 +33,21 @@ app.get('/api/exercises', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/routines', (req, res, next) => {
+  const sql = `
+    select "routineId",
+           "name",
+           "description",
+           "difficulty"
+      from "routines"
+  `;
+  db.query(sql)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
