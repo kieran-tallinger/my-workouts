@@ -187,6 +187,9 @@ ALTER TABLE ONLY public.routines ALTER COLUMN "routineId" SET DEFAULT nextval('p
 --
 
 COPY public.exercises ("exerciseId", name, description, "createdAt") FROM stdin;
+1	Push Ups	Basic push ups with focus on 3-2-3 count	2020-05-01 16:20:42.902314-07
+2	Sit Ups	Basic sit ups with arms crossed	2020-05-01 16:20:42.902314-07
+3	Lunges	Alternating lunges with light weight in each hand	2020-05-01 16:20:42.902314-07
 \.
 
 
@@ -203,6 +206,9 @@ COPY public."routineExercises" ("routineExerciseId", "routineId", "exerciseId", 
 --
 
 COPY public.routines ("routineId", name, description, difficulty, "createdAt") FROM stdin;
+1	Legs	An endurance focused leg workout	Hard	2020-05-01 16:23:57.029618-07
+2	Core	Just a quick core toning set for at home	Easy	2020-05-01 16:23:57.029618-07
+3	General	Full body, comprehensive workout with no particular focus	Medium	2020-05-01 16:23:57.029618-07
 \.
 
 
@@ -210,7 +216,7 @@ COPY public.routines ("routineId", name, description, difficulty, "createdAt") F
 -- Name: exercises_exerciseId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."exercises_exerciseId_seq"', 1, false);
+SELECT pg_catalog.setval('public."exercises_exerciseId_seq"', 3, true);
 
 
 --
@@ -224,7 +230,7 @@ SELECT pg_catalog.setval('public."routineExercises_routineExerciseId_seq"', 1, f
 -- Name: routines_routineId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."routines_routineId_seq"', 1, false);
+SELECT pg_catalog.setval('public."routines_routineId_seq"', 3, true);
 
 
 --
