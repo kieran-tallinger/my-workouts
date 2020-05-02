@@ -198,6 +198,11 @@ COPY public.exercises ("exerciseId", name, description, "createdAt") FROM stdin;
 --
 
 COPY public."routineExercises" ("routineExerciseId", "routineId", "exerciseId", sets, reps, "createdAt") FROM stdin;
+1	1	3	5	40	2020-05-01 18:36:37.072004-07
+2	2	2	3	25	2020-05-01 18:36:37.072004-07
+3	3	1	3	25	2020-05-01 18:36:37.072004-07
+4	3	2	3	20	2020-05-01 18:36:37.072004-07
+5	3	3	3	20	2020-05-01 18:36:37.072004-07
 \.
 
 
@@ -223,7 +228,7 @@ SELECT pg_catalog.setval('public."exercises_exerciseId_seq"', 3, true);
 -- Name: routineExercises_routineExerciseId_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
-SELECT pg_catalog.setval('public."routineExercises_routineExerciseId_seq"', 1, false);
+SELECT pg_catalog.setval('public."routineExercises_routineExerciseId_seq"', 5, true);
 
 
 --
