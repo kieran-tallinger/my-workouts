@@ -244,6 +244,7 @@ class App extends React.Component {
               }
               delete={this.deleteExercise}
               update={this.switchFormMode}
+              selectRoutine={true}
               back={this.switchView} />
             <ExerciseForm
               onSubmit={this.submitExercise}
@@ -257,6 +258,7 @@ class App extends React.Component {
               exercises={this.state.exercises}
               delete={this.deleteExercise}
               update={this.switchFormMode}
+              selectedRoutine={false}
               back={this.switchView}/>
             <ExerciseForm
               onSubmit={this.submitExercise}
