@@ -233,18 +233,10 @@ class App extends React.Component {
         return (
           <div className='row'>
             <ExerciseTable
-              exercises={
-                this.state.exercises.filter(exercise => {
-                  if (this.state.selectedRoutine.exercises.includes((exercise.id).toString())) {
-                    return true;
-                  } else {
-                    return false;
-                  }
-                })
-              }
+              exercises={this.state.selectedRoutine}
               delete={this.deleteExercise}
               update={this.switchFormMode}
-              selectRoutine={true}
+              selectedRoutine={true}
               back={this.switchView} />
             <ExerciseForm
               onSubmit={this.submitExercise}

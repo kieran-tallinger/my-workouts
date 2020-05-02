@@ -48,6 +48,25 @@ app.get('/api/routines', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.get('/api/routines/:routineId', (req, res, next) => {
+  const routineId = parseInt(req.params.routineId);
+  const values = [routineId];
+  const sql = `
+    select "r"."sets",
+           "r"."reps",
+           "r"."routineExerciseId",
+           "e"."name"
+      from "routineExercises" as "r"
+      join "exercises" as "e" using ("exerciseId")
+     where "routineId" = $1;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
