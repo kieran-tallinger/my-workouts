@@ -140,7 +140,7 @@ class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    const updatedExercises = this.state.exercises.filter(value => value.id !== id);
+    const updatedExercises = this.state.exercises.filter(value => value.exerciseId !== id);
     this.setState({
       exercises: updatedExercises
     });

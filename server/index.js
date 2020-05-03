@@ -81,6 +81,21 @@ app.post('/api/exercises', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/exercises/:exerciseId', (req, res, next) => {
+  const exerciseId = parseInt(req.params.exerciseId);
+  const values = [exerciseId];
+  const sql = `
+    delete from "exercises"
+     where "exerciseId" = $1
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
