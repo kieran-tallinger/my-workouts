@@ -67,6 +67,20 @@ app.get('/api/routines/:routineId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/exercises', (req, res, next) => {
+  const values = [req.body.name, req.body.description];
+  const sql = `
+    insert into "exercises" ("exerciseId", "name", "description", "createdAt")
+    values (default, $1, $2, default)
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });

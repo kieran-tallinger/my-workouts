@@ -37,7 +37,7 @@ class ExerciseForm extends Component {
 
   handleDescriptionChange(e) {
     this.setState({
-      sets: e.target.value
+      description: e.target.value
     });
   }
 
