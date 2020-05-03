@@ -5,12 +5,10 @@ class ExerciseForm extends Component {
     super(props);
     this.state = {
       name: '',
-      sets: '',
-      reps: ''
+      description: ''
     };
     this.handleNameChange = this.handleNameChange.bind(this);
-    this.handleSetsChange = this.handleSetsChange.bind(this);
-    this.handleRepsChange = this.handleRepsChange.bind(this);
+    this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
   }
@@ -20,14 +18,12 @@ class ExerciseForm extends Component {
       if (this.props.currentlyEditing) {
         this.setState({
           name: this.props.currentlyEditing.name,
-          sets: this.props.currentlyEditing.sets,
-          reps: this.props.currentlyEditing.reps
+          description: this.props.currentlyEditing.description
         });
       } else if (!this.props.currentlyEditing) {
         this.setState({
           name: '',
-          sets: '',
-          reps: ''
+          description: ''
         });
       }
     }
@@ -39,15 +35,9 @@ class ExerciseForm extends Component {
     });
   }
 
-  handleSetsChange(e) {
+  handleDescriptionChange(e) {
     this.setState({
       sets: e.target.value
-    });
-  }
-
-  handleRepsChange(e) {
-    this.setState({
-      reps: e.target.value
     });
   }
 
@@ -55,22 +45,19 @@ class ExerciseForm extends Component {
     e.preventDefault();
     const newExercise = {
       name: this.state.name,
-      sets: parseInt(this.state.sets),
-      reps: parseInt(this.state.reps)
+      description: this.state.description
     };
     this.props.onSubmit(newExercise);
     this.setState({
       name: '',
-      sets: '',
-      reps: ''
+      description: ''
     });
   }
 
   handleReset() {
     this.setState({
       name: '',
-      sets: '',
-      reps: ''
+      description: ''
     });
   }
 
@@ -96,23 +83,12 @@ class ExerciseForm extends Component {
           </div>
           <div className='form-row my-2'>
             <i className='col-1 far fa-list-alt py-2 mx-2 fa-lg'></i>
-            <input
+            <textarea
               required
-              type='text'
-              placeholder='Sets'
+              placeholder='A short description of the exercise'
               className='form-control col ml-2'
-              value={this.state.sets}
-              onChange={this.handleSetsChange} />
-          </div>
-          <div className='form-row my-2'>
-            <i className='col-1 fas fa-graduation-cap py-2 mx-2 fa-lg'></i>
-            <input
-              required
-              type='text'
-              placeholder='Reps'
-              className='form-control col ml-2'
-              value={this.state.reps}
-              onChange={this.handleRepsChange} />
+              value={this.state.description}
+              onChange={this.handleDescriptionChange} />
           </div>
           <div className='form-row my-3 justify-content-end'>
             <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
