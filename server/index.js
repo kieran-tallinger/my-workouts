@@ -81,6 +81,20 @@ app.post('/api/exercises', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.post('/api/routines', (req, res, next) => {
+  const values = [req.body.name, req.body.description, req.body.difficulty];
+  const sql = `
+    insert into "routines" ("routineId", "name", "description", "difficulty", "createdAt")
+    values (default, $1, $2, $3, default)
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.delete('/api/exercises/:exerciseId', (req, res, next) => {
   const exerciseId = parseInt(req.params.exerciseId);
   const values = [exerciseId];
