@@ -6,12 +6,17 @@ class ExerciseForm extends Component {
     this.state = {
       name: '',
       description: '',
-      choosenExercise: null
+      sets: '',
+      reps: '',
+      choosenExercise: ''
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
     this.handleExercisesChange = this.handleExercisesChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleRepsChange = this.handleRepsChange.bind(this);
+    this.handleSetsChange = this.handleSetsChange.bind(this);
+    this.handleNewExerciseSubmit = this.handleNewExerciseSubmit.bind(this);
+    this.handleRoutineExerciseSubmit = this.handleRoutineExerciseSubmit.bind(this);
     this.handleReset = this.handleReset.bind(this);
     this.createForm = this.createForm.bind(this);
     this.createExercisesList = this.createExercisesList.bind(this);
@@ -51,7 +56,19 @@ class ExerciseForm extends Component {
     });
   }
 
-  handleSubmit(e) {
+  handleSetsChange(e) {
+    this.setState({
+      sets: e.target.value
+    });
+  }
+
+  handleRepsChange(e) {
+    this.setState({
+      reps: e.target.value
+    });
+  }
+
+  handleNewExerciseSubmit(e) {
     e.preventDefault();
     const newExercise = {
       name: this.state.name,
@@ -64,10 +81,29 @@ class ExerciseForm extends Component {
     });
   }
 
+  handleRoutineExerciseSubmit(e) {
+    e.preventDefault();
+    const newRoutineExercise = {
+      exerciseId: this.state.choosenExercise,
+      routineId: this.props.selectedRoutineId,
+      sets: this.state.sets,
+      reps: this.state.reps
+    };
+    this.props.onSubmit(newRoutineExercise);
+    this.setState({
+      choosenExercise: '',
+      sets: '',
+      reps: ''
+    });
+  }
+
   handleReset() {
     this.setState({
       name: '',
-      description: ''
+      description: '',
+      choosenExercise: '',
+      sets: '',
+      reps: ''
     });
   }
 
@@ -97,7 +133,7 @@ class ExerciseForm extends Component {
     if (this.props.exercises) {
       const exercisesList = this.createExercisesList();
       return (
-        <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
+        <form onSubmit={this.handleRoutineExerciseSubmit} onReset={this.handleReset}>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-dumbbell py-2 mx-2 fa-lg'></i>
             {exercisesList}
@@ -110,7 +146,7 @@ class ExerciseForm extends Component {
               placeholder='Number of Sets'
               className='form-control col ml-2'
               value={this.state.sets}
-              onChange={this.handleRepsChange} />
+              onChange={this.handleSetsChange} />
           </div>
           <div className='form-row my-2'>
             <i className='col-1 far fa-list-alt py-2 mx-2 fa-lg'></i>
@@ -120,7 +156,7 @@ class ExerciseForm extends Component {
               placeholder='Number of Reps'
               className='form-control col ml-2'
               value={this.state.reps}
-              onChange={this.handleSetsChange} />
+              onChange={this.handleRepsChange} />
           </div>
           <div className='form-row my-3 justify-content-end'>
             <button type='submit' className='btn btn-success mx-1'>{submitButton}</button>
@@ -130,7 +166,7 @@ class ExerciseForm extends Component {
       );
     } else {
       return (
-        <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
+        <form onSubmit={this.handleNewExerciseSubmit} onReset={this.handleReset}>
           <div className='form-row my-2'>
             <i className='col-1 fas fa-user py-2 mx-2 fa-lg'></i>
             <input

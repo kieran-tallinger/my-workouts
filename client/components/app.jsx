@@ -13,6 +13,7 @@ class App extends React.Component {
       exercises: [],
       routines: [],
       selectedRoutine: null,
+      selectedRoutineId: null,
       currentlyEditing: null
     };
     this.submitExercise = this.submitExercise.bind(this);
@@ -133,6 +134,22 @@ class App extends React.Component {
     }
   }
 
+  submitRoutineExercise(newRoutineExercise) {
+    const fetchParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(newRoutineExercise)
+    };
+    fetch('/api/routineExercises', fetchParams)
+      .then(res => res.json())
+      .then(data => { return data; })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   deleteExercise(id) {
     fetch(`/api/exercises/${id}`, { method: 'DELETE' })
       .then(res => res.json())
@@ -164,7 +181,8 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          selectedRoutine: data
+          selectedRoutine: data,
+          selectedRoutineId: id
         });
       })
       .catch(error => {
@@ -239,8 +257,9 @@ class App extends React.Component {
               selectedRoutine={true}
               back={this.switchView} />
             <ExerciseForm
-              onSubmit={this.submitExercise}
+              onSubmit={this.submitRoutineExercise}
               exercises={this.state.exercises}
+              selectedRoutineId={this.state.selectedRoutineId}
               currentlyEditing={this.state.currentlyEditing} />
           </div>
         );
