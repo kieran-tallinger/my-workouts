@@ -153,7 +153,7 @@ class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
-    const updatedRoutines = this.state.routines.filter(value => value.id !== id);
+    const updatedRoutines = this.state.routines.filter(value => value.routineId !== id);
     this.setState({
       routines: updatedRoutines
     });
