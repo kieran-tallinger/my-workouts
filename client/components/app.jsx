@@ -18,6 +18,7 @@ class App extends React.Component {
     };
     this.submitExercise = this.submitExercise.bind(this);
     this.submitRoutine = this.submitRoutine.bind(this);
+    this.submitRoutineExercise = this.submitRoutineExercise.bind(this);
     this.deleteExercise = this.deleteExercise.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.selectRoutine = this.selectRoutine.bind(this);
@@ -144,7 +145,11 @@ class App extends React.Component {
     };
     fetch('/api/routineExercises', fetchParams)
       .then(res => res.json())
-      .then(data => { return data; })
+      .then(data => {
+        this.setState({
+          selectedRoutine: this.state.selectedRoutine.concat(data)
+        });
+      })
       .catch(error => {
         console.error(error);
       });

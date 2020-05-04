@@ -99,11 +99,12 @@ app.post('/api/routineExercises', (req, res, next) => {
   const values = [parseInt(req.body.routineId), parseInt(req.body.exerciseId), parseInt(req.body.sets), parseInt(req.body.reps)];
   const sql = `
     insert into "routineExercises" ("routineExerciseId", "routineId", "exerciseId", "sets", "reps", "createdAt")
-    values (default, $1, $2, $3, $4, default);
+    values (default, $1, $2, $3, $4, default)
+    returning *;
   `;
   db.query(sql, values)
     .then(result => {
-      res.json(result.rows);
+      res.json(result.rows[0]);
     })
     .catch(err => next(err));
 });
