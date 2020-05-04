@@ -240,6 +240,7 @@ class App extends React.Component {
               back={this.switchView} />
             <ExerciseForm
               onSubmit={this.submitExercise}
+              exercises={this.state.exercises}
               currentlyEditing={this.state.currentlyEditing} />
           </div>
         );
