@@ -139,6 +139,20 @@ app.delete('/api/routines/:routineId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.delete('/api/routineExercises/:routineExerciseId', (req, res, next) => {
+  const values = [parseInt(req.params.routineExerciseId)];
+  const sql = `
+    delete from "routineExercises"
+     where "routineExerciseId" = $1
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use('/api', (req, res, next) => {
   next(new ClientError(`cannot ${req.method} ${req.originalUrl}`, 404));
 });
