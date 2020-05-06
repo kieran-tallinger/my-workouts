@@ -12,7 +12,7 @@ class App extends React.Component {
       view: 'routines',
       exercises: [],
       routines: [],
-      selectedRoutine: null,
+      selectedRoutineExercises: null,
       selectedRoutineId: null,
       currentlyEditing: null
     };
@@ -147,7 +147,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          selectedRoutine: this.state.selectedRoutine.concat(data)
+          selectedRoutineExercises: this.state.selectedRoutineExercises.concat(data)
         });
       })
       .catch(error => {
@@ -186,7 +186,7 @@ class App extends React.Component {
       .then(res => res.json())
       .then(data => {
         this.setState({
-          selectedRoutine: data,
+          selectedRoutineExercises: data,
           selectedRoutineId: id
         });
       })
@@ -198,7 +198,7 @@ class App extends React.Component {
 
   viewAllExercises() {
     this.setState({
-      selectedRoutine: null,
+      selectedRoutineExercises: null,
       view: 'exercises'
     });
   }
@@ -252,11 +252,11 @@ class App extends React.Component {
         </div>
       );
     } else if (this.state.view === 'exercises') {
-      if (this.state.selectedRoutine) {
+      if (this.state.selectedRoutineExercises) {
         return (
           <div className='row'>
             <ExerciseTable
-              exercises={this.state.selectedRoutine}
+              exercises={this.state.selectedRoutineExercises}
               delete={this.deleteExercise}
               update={this.switchFormMode}
               selectedRoutine={true}
@@ -264,11 +264,12 @@ class App extends React.Component {
             <ExerciseForm
               onSubmit={this.submitRoutineExercise}
               exercises={this.state.exercises}
+              refresh={this.selectRoutine}
               selectedRoutineId={this.state.selectedRoutineId}
               currentlyEditing={this.state.currentlyEditing} />
           </div>
         );
-      } else if (!this.state.selectedRoutine) {
+      } else if (!this.state.selectedRoutineExercises) {
         return (
           <div className='row'>
             <ExerciseTable

@@ -8,7 +8,7 @@ class ExerciseForm extends Component {
       description: '',
       sets: '',
       reps: '',
-      choosenExercise: ''
+      choosenExercise: 1
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -90,8 +90,9 @@ class ExerciseForm extends Component {
       reps: this.state.reps
     };
     this.props.onSubmit(newRoutineExercise);
+    this.props.refresh(this.props.selectedRoutineId);
     this.setState({
-      choosenExercise: '',
+      choosenExercise: 1,
       sets: '',
       reps: ''
     });
@@ -101,7 +102,7 @@ class ExerciseForm extends Component {
     this.setState({
       name: '',
       description: '',
-      choosenExercise: '',
+      choosenExercise: 1,
       sets: '',
       reps: ''
     });
