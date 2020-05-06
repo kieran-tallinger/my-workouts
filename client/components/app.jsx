@@ -20,6 +20,7 @@ class App extends React.Component {
     this.submitRoutine = this.submitRoutine.bind(this);
     this.submitRoutineExercise = this.submitRoutineExercise.bind(this);
     this.deleteExercise = this.deleteExercise.bind(this);
+    this.deleteRoutineExercise = this.deleteRoutineExercise.bind(this);
     this.deleteRoutine = this.deleteRoutine.bind(this);
     this.selectRoutine = this.selectRoutine.bind(this);
     this.switchFormMode = this.switchFormMode.bind(this);
@@ -168,6 +169,19 @@ class App extends React.Component {
     });
   }
 
+  deleteRoutineExercise(id) {
+    fetch(`/api/routineExercises/${id}`, { method: 'DELETE' })
+      .then(res => res.json())
+      .then(data => { return data; })
+      .catch(error => {
+        console.error(error);
+      });
+    const updatedExercises = this.state.selectedRoutineExercises.filter(value => value.routineExerciseId !== id);
+    this.setState({
+      selectedRoutineExercises: updatedExercises
+    });
+  }
+
   deleteRoutine(id) {
     fetch(`/api/routines/${id}`, { method: 'DELETE' })
       .then(res => res.json())
@@ -257,7 +271,7 @@ class App extends React.Component {
           <div className='row'>
             <ExerciseTable
               exercises={this.state.selectedRoutineExercises}
-              delete={this.deleteExercise}
+              delete={this.deleteRoutineExercise}
               update={this.switchFormMode}
               selectedRoutine={true}
               back={this.switchView} />
