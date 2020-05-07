@@ -16,6 +16,7 @@ class App extends React.Component {
       selectedRoutineId: null,
       currentlyEditing: null
     };
+    this.getRoutines = this.getRoutines.bind(this);
     this.submitExercise = this.submitExercise.bind(this);
     this.submitRoutine = this.submitRoutine.bind(this);
     this.submitRoutineExercise = this.submitRoutineExercise.bind(this);
@@ -107,14 +108,17 @@ class App extends React.Component {
         },
         body: JSON.stringify(newRoutine)
       };
-      fetch(`/api/routines/${this.state.currentlyEditing.id}`, fetchParams)
+      fetch(`/api/routines/${this.state.currentlyEditing.routineId}`, fetchParams)
         .then(res => res.json())
-        .then(data => { return data; })
+        .then(data => {
+          this.getRoutines();
+          return data;
+        })
         .catch(error => {
           console.error(error);
         });
       this.switchFormMode();
-      this.getRoutines();
+
     } else if (!this.state.currentlyEditing) {
       const fetchParams = {
         method: 'POST',
@@ -226,7 +230,7 @@ class App extends React.Component {
   switchFormMode(id) {
     if (this.state.view === 'routines') {
       if (!this.state.currentlyEditing) {
-        const routineToUpdate = this.state.routines.filter(value => value.id === id);
+        const routineToUpdate = this.state.routines.filter(value => value.routineId === id);
         this.setState({
           currentlyEditing: routineToUpdate[0]
         });
@@ -262,6 +266,7 @@ class App extends React.Component {
           <RoutineForm
             exercises={this.state.exercises}
             onSubmit={this.submitRoutine}
+            refresh={this.getRoutines}
             currentlyEditing={this.state.currentlyEditing}/>
         </div>
       );
