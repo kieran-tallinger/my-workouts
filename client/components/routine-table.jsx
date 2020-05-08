@@ -24,8 +24,8 @@ function RoutinesTable(props) {
             props.routines.map(routine => {
               return (
                 <Routine
-                  key={routine.id}
-                  id={routine.id}
+                  key={routine.routineId}
+                  id={routine.routineId}
                   name={routine.name}
                   description={routine.description}
                   difficulty={routine.difficulty}
