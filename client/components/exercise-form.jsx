@@ -8,7 +8,7 @@ class ExerciseForm extends Component {
       description: '',
       sets: '',
       reps: '',
-      choosenExercise: 1
+      choosenExercise: ''
     };
     this.handleNameChange = this.handleNameChange.bind(this);
     this.handleDescriptionChange = this.handleDescriptionChange.bind(this);
@@ -27,7 +27,9 @@ class ExerciseForm extends Component {
       if (this.props.currentlyEditing) {
         this.setState({
           name: this.props.currentlyEditing.name,
-          description: this.props.currentlyEditing.description
+          description: this.props.currentlyEditing.description,
+          sets: this.props.currentlyEditing.sets,
+          reps: this.props.currentlyEditing.reps
         });
       } else if (!this.props.currentlyEditing) {
         this.setState({
@@ -92,7 +94,7 @@ class ExerciseForm extends Component {
     this.props.onSubmit(newRoutineExercise);
     this.props.refresh(this.props.selectedRoutineId);
     this.setState({
-      choosenExercise: 1,
+      choosenExercise: '',
       sets: '',
       reps: ''
     });
@@ -102,7 +104,7 @@ class ExerciseForm extends Component {
     this.setState({
       name: '',
       description: '',
-      choosenExercise: 1,
+      choosenExercise: '',
       sets: '',
       reps: ''
     });

@@ -61,6 +61,19 @@ class App extends React.Component {
       });
   }
 
+  getRoutineExercises(id) {
+    fetch(`/api/routines/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        this.setState({
+          selectedRoutineExercises: data
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   submitExercise(newExercise) {
     if (this.state.currentlyEditing) {
       const fetchParams = {
@@ -142,23 +155,44 @@ class App extends React.Component {
   }
 
   submitRoutineExercise(newRoutineExercise) {
-    const fetchParams = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(newRoutineExercise)
-    };
-    fetch('/api/routineExercises', fetchParams)
-      .then(res => res.json())
-      .then(data => {
-        this.setState({
-          selectedRoutineExercises: this.state.selectedRoutineExercises.concat(data)
+    if (this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRoutineExercise)
+      };
+      fetch(`/api/routineExercises/${this.state.currentlyEditing.routineExerciseId}`, fetchParams)
+        .then(res => res.json())
+        .then(data => {
+          this.getRoutineExercises(this.state.selectedRoutineId);
+          return data;
+        })
+        .catch(error => {
+          console.error(error);
         });
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      this.switchFormMode();
+    } else if (!this.state.currentlyEditing) {
+      const fetchParams = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newRoutineExercise)
+      };
+      fetch('/api/routineExercises', fetchParams)
+        .then(res => res.json())
+        .then(data => {
+          this.getRoutineExercises(this.state.selectedRoutineId);
+          this.setState({
+            selectedRoutineExercises: this.state.selectedRoutineExercises.concat(data)
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    }
   }
 
   deleteExercise(id) {
@@ -223,9 +257,16 @@ class App extends React.Component {
   }
 
   switchView(newView) {
-    this.setState({
-      view: newView
-    });
+    if (newView === 'routines') {
+      this.setState({
+        view: newView,
+        selectedRoutineId: null
+      });
+    } else {
+      this.setState({
+        view: newView
+      });
+    }
   }
 
   switchFormMode(id) {
@@ -242,10 +283,17 @@ class App extends React.Component {
       }
     } else if (this.state.view === 'exercises') {
       if (!this.state.currentlyEditing) {
-        const exerciseToUpdate = this.state.exercises.filter(value => value.exerciseId === id);
-        this.setState({
-          currentlyEditing: exerciseToUpdate[0]
-        });
+        if (this.state.selectedRoutineId) {
+          const routineExerciseToUpdate = this.state.selectedRoutineExercises.filter(value => value.routineExerciseId === id);
+          this.setState({
+            currentlyEditing: routineExerciseToUpdate[0]
+          });
+        } else if (!this.state.selectedRoutineId) {
+          const exerciseToUpdate = this.state.exercises.filter(value => value.exerciseId === id);
+          this.setState({
+            currentlyEditing: exerciseToUpdate[0]
+          });
+        }
       } else if (this.state.currentlyEditing) {
         this.setState({
           currentlyEditing: null
