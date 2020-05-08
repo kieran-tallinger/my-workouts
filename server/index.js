@@ -129,7 +129,7 @@ app.put('/api/routines/:routineId', (req, res, next) => {
 app.put('/api/exercises/:exerciseId', (req, res, next) => {
   const values = [parseInt(req.params.exerciseId), req.body.name, req.body.description];
   const sql = `
-    update "exercise"
+    update "exercises"
       set "name"         = $2,
           "description"  = $3
      where "exerciseId"  = $1

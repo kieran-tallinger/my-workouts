@@ -70,14 +70,16 @@ class App extends React.Component {
         },
         body: JSON.stringify(newExercise)
       };
-      fetch(`/api/exercises/${this.state.currentlyEditing.id}`, fetchParams)
+      fetch(`/api/exercises/${this.state.currentlyEditing.exerciseId}`, fetchParams)
         .then(res => res.json())
-        .then(data => { return data; })
+        .then(data => {
+          this.getExercises();
+          return data;
+        })
         .catch(error => {
           console.error(error);
         });
       this.switchFormMode();
-      this.getExercises();
     } else if (!this.state.currentlyEditing) {
       const fetchParams = {
         method: 'POST',
@@ -118,7 +120,6 @@ class App extends React.Component {
           console.error(error);
         });
       this.switchFormMode();
-
     } else if (!this.state.currentlyEditing) {
       const fetchParams = {
         method: 'POST',
@@ -241,7 +242,7 @@ class App extends React.Component {
       }
     } else if (this.state.view === 'exercises') {
       if (!this.state.currentlyEditing) {
-        const exerciseToUpdate = this.state.exercises.filter(value => value.id === id);
+        const exerciseToUpdate = this.state.exercises.filter(value => value.exerciseId === id);
         this.setState({
           currentlyEditing: exerciseToUpdate[0]
         });
