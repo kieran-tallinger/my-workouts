@@ -246,23 +246,28 @@ class App extends React.Component {
       .catch(error => {
         console.error(error);
       });
+    this.switchFormMode();
     this.switchView('exercises');
   }
 
   viewAllExercises() {
+    this.switchFormMode();
     this.setState({
       selectedRoutineExercises: null,
+      selectedRoutineId: null,
       view: 'exercises'
     });
   }
 
   switchView(newView) {
     if (newView === 'routines') {
+      this.switchFormMode();
       this.setState({
         view: newView,
         selectedRoutineId: null
       });
     } else {
+      this.switchFormMode();
       this.setState({
         view: newView
       });
