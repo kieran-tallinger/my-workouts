@@ -126,6 +126,22 @@ app.put('/api/routines/:routineId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.put('/api/exercises/:exerciseId', (req, res, next) => {
+  const values = [parseInt(req.params.exerciseId), req.body.name, req.body.description];
+  const sql = `
+    update "exercise"
+      set "name"         = $2,
+          "description"  = $3
+     where "exerciseId"  = $1
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.delete('/api/exercises/:exerciseId', (req, res, next) => {
   const exerciseId = parseInt(req.params.exerciseId);
   const values = [exerciseId];
