@@ -142,6 +142,22 @@ app.put('/api/exercises/:exerciseId', (req, res, next) => {
     .catch(err => next(err));
 });
 
+app.put('/api/routineExercises/:routineExerciseId', (req, res, next) => {
+  const values = [parseInt(req.params.routineExerciseId), parseInt(req.body.sets), parseInt(req.body.reps)];
+  const sql = `
+    update "routineExercises"
+      set "sets"                = $2,
+          "reps"                = $3
+     where "routineExerciseId"  = $1
+    returning *;
+  `;
+  db.query(sql, values)
+    .then(result => {
+      res.json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
 app.delete('/api/exercises/:exerciseId', (req, res, next) => {
   const exerciseId = parseInt(req.params.exerciseId);
   const values = [exerciseId];
