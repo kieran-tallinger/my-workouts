@@ -10,7 +10,7 @@ function ExerciseTable(props) {
   }
   if (props.selectedRoutine === true) {
     return (
-      <div className='col mt-5'>
+      <div className='col-12 col-md-6 mt-5'>
         <table className='table table-bordered table-striped table-hover col'>
           <thead className='thead-dark'>
             <tr>
@@ -50,7 +50,7 @@ function ExerciseTable(props) {
     );
   } else if (props.selectedRoutine === false) {
     return (
-      <div className='col mt-5'>
+      <div className='col-12 col-md-6 mt-5'>
         <table className='table table-bordered table-striped table-hover col'>
           <thead className='thead-dark'>
             <tr>
