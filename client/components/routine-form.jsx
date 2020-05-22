@@ -83,8 +83,8 @@ class RoutineForm extends Component {
           <h3>{header}</h3>
         </div>
         <form onSubmit={this.handleSubmit} onReset={this.handleReset}>
-          <div className='form-row my-2'>
-            <i className='col-1 fas fa-dumbbell fa-lg py-2 mx-2'></i>
+          <div className='input-group form-row my-2'>
+            <span className='input-group-addon'><i className='col-1 fas fa-dumbbell fa-lg py-2'></i></span>
             <input
               required
               autoFocus
@@ -94,8 +94,8 @@ class RoutineForm extends Component {
               value={this.state.name}
               onChange={this.handleNameChange}/>
           </div>
-          <div className='form-row my-2'>
-            <i className='col-1 fas fa-pencil-alt fa-lg py-2 mx-2'></i>
+          <div className='input-group form-row my-2'>
+            <span className='input-group-addon'><i className='col-1 fas fa-pencil-alt fa-lg py-2 mr-1'></i></span>
             <textarea
               required
               placeholder='A short description of the routines focus'
@@ -103,8 +103,8 @@ class RoutineForm extends Component {
               value={this.state.description}
               onChange={this.handleDescriptionChange} />
           </div>
-          <div className='form-row my-2'>
-            <i className='col-1 fas fa-exclamation-circle fa-lg py-2 mx-2'></i>
+          <div className='input-group form-row my-2'>
+            <span className='input-group-addon'><i className='col-1 fas fa-exclamation-circle fa-lg py-2 mr-1'></i></span>
             <select
               required
               className='form-control col ml-2'

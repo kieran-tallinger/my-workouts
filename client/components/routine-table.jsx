@@ -9,8 +9,8 @@ function RoutinesTable(props) {
     hidden = '';
   }
   return (
-    <div className='col mt-5'>
-      <table className='table table-bordered table-striped table-hover'>
+    <div className='col-12 col-md-8 mt-5'>
+      <table className='table table-responsive table-bordered table-striped table-hover'>
         <thead className='thead-dark'>
           <tr>
             <th>Routine</th>
