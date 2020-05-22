@@ -10,7 +10,7 @@ function RoutinesTable(props) {
   }
   return (
     <div className='col mt-5'>
-      <table className='table table-bordered table-striped table-hover'>
+      <table className='table table-responsive table-bordered table-striped table-hover'>
         <thead className='thead-dark'>
           <tr>
             <th>Routine</th>
