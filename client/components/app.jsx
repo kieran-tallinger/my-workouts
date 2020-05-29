@@ -355,6 +355,7 @@ class App extends React.Component {
               back={this.switchView}/>
             <ExerciseForm
               onSubmit={this.submitExercise}
+              cancel={this.switchFormMode}
               currentlyEditing={this.state.currentlyEditing}/>
           </div>
         );
