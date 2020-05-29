@@ -72,6 +72,7 @@ class RoutineForm extends Component {
       description: '',
       difficulty: 'Medium'
     });
+    this.props.cancel();
   }
 
   render() {

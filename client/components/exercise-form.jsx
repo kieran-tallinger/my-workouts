@@ -108,6 +108,7 @@ class ExerciseForm extends Component {
       sets: '',
       reps: ''
     });
+    this.props.cancel();
   }
 
   createExercisesList() {

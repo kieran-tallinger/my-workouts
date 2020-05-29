@@ -321,6 +321,7 @@ class App extends React.Component {
             exercises={this.state.exercises}
             onSubmit={this.submitRoutine}
             refresh={this.getRoutines}
+            cancel={this.switchFormMode}
             currentlyEditing={this.state.currentlyEditing}/>
         </div>
       );
@@ -338,6 +339,7 @@ class App extends React.Component {
               onSubmit={this.submitRoutineExercise}
               exercises={this.state.exercises}
               refresh={this.selectRoutine}
+              cancel={this.switchFormMode}
               selectedRoutineId={this.state.selectedRoutineId}
               currentlyEditing={this.state.currentlyEditing} />
           </div>
@@ -353,6 +355,7 @@ class App extends React.Component {
               back={this.switchView}/>
             <ExerciseForm
               onSubmit={this.submitExercise}
+              cancel={this.switchFormMode}
               currentlyEditing={this.state.currentlyEditing}/>
           </div>
         );
