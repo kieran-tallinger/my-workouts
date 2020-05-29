@@ -321,6 +321,7 @@ class App extends React.Component {
             exercises={this.state.exercises}
             onSubmit={this.submitRoutine}
             refresh={this.getRoutines}
+            cancel={this.switchFormMode}
             currentlyEditing={this.state.currentlyEditing}/>
         </div>
       );
